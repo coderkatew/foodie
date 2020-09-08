@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kate Walsh">
+    <title>Recipes</title>
+</head>
+<body>
+ Test
+ <h1>
+    {% for recipe in recipes %}
+        {{recipe.recipe_name}}
+        </h1>
+        <div class="col s6 ">
+                            <h6><strong>Cooking time <br><span class="units">(min)</span></strong></h6>
+                            <p>{{recipe.time}}</p>
+                        </div>
+    {% endfor %}
+    
+</body>
+</html>

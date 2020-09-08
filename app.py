@@ -1,13 +1,18 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import (Flask, render_template, redirect, request, url_for, session, flash)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
-# creates instance of Flash
+# imports environment variables
+from os import path
+if path.exists("env.py"):
+    import env
+
+# creates instance of Flask
 app = Flask(__name__)
 
-app.config["MONGODB_NAME"] = os.environ.get('MONGODB_URI')
-app.config["MONGODB_URI"] = os.environ.get('MONGODB_URI')
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_DBNAME"] = 'foodie'
 
 mongo = PyMongo(app)
 
@@ -15,7 +20,8 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template("index.html", recipes=mongo.db.recipes.find())
+    recipes = mongo.db.recipes.find()
+    return render_template("all_recipes.html", recipes = recipes)
 
 
 if __name__ == '__main__':
