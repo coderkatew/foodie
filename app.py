@@ -26,8 +26,13 @@ def all_recipes():
 # add a new recipe
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('add_recipe.html' )
+    return render_template('add_recipe.html')
 
+# browse recipes
+@app.route('/browse_recipes')
+def browse_recipes():
+    recipes = mongo.db.recipes.find()
+    return render_template('browse_recipes.html', recipes = recipes)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
