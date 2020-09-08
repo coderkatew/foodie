@@ -7,9 +7,23 @@
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <meta name="author" content="Kate Walsh">
     <title>Foodie</title>
+    
 </head>
 <body>
- Test
+<header>
+<div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Foodie</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Browse</a></li>
+          <li><a href="#">Add Recipe</a></li>
+          <li><a href="#">My Recipes</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  </header>
  <h1>
     {% for recipe in recipes %}
         {{recipe.recipe_name}}
