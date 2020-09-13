@@ -13,7 +13,7 @@ if path.exists("env.py"):
 # creates instance of Flask
 app = Flask(__name__)
 
-
+app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'foodie'
 
@@ -30,9 +30,17 @@ def index():
     return render_template('login.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
-    return ''
+    users = mongo.db.users
+    login_user = users.find_one({'name': request.form['username']})
+
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+            session['username'] = request.form['username']
+        return redirect(url_for('all_recipes'))
+
+    return 'Invalid username/password combination'
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -42,78 +50,81 @@ def register():
         existing_user = users.find_one({'name': request.form['username']})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['pass'], bcrypt.gensalt())
+            hashpass = bcrypt.hashpw(
+                request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert(
-                {'name': request.form['username'], password: hashpass})
-            session['username']=request.form['username']
-            return redirect(url_for('index'))
-
-        return 'Sorry,that username already exists'
+                {'name': request.form['username'], 'password': hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('all_recipes'))        
+            
+        flash('Sorry,that username already exists.')
+        return render_template('register.html')
 
     return render_template('register.html')
 
 
 @ app.route('/all_recipes')
 def all_recipes():
-    recipes=mongo.db.recipes.find()
-    return render_template('all_recipes.html', recipes = recipes)
+    recipes = mongo.db.recipes.find()
+    return render_template('all_recipes.html', recipes=recipes)
 
 
 # add a new recipe
 @ app.route('/add_recipe')
 def add_recipe():
     return render_template('add_recipe.html',
-                           title = "Add Recipe",
-                           categories = mongo.db.categories.find(),
-                           levels = mongo.db.levels.find(),
-                           cuisines = mongo.db.cuisines.find(),
-                           allergens = mongo.db.allergens.find())
+                           title="Add Recipe",
+                           categories=mongo.db.categories.find(),
+                           levels=mongo.db.levels.find(),
+                           cuisines=mongo.db.cuisines.find(),
+                           allergens=mongo.db.allergens.find())
 
 
 # converts string from text input field to array by splitting the string at each new line break
 def convert_to_array(string):
-    array=string.split("\n")
+    array = string.split("\n")
     return array
 
 # add recipe data to MongoDB
-@ app.route('/insert_recipe', methods = ['POST'])
+
+
+@ app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
-    recipes=mongo.db.recipes
+    recipes = mongo.db.recipes
     recipes.insert({
-                'recipe_name': request.form['recipe_name'],
-                'image_url': request.form['image_url'],
-                # 'contributor': session['username'],
-                'category': request.form['category'],
-                'difficulty': request.form['difficulty'],
-                'cuisine': request.form['cuisine'],
-                'servings': request.form['servings'],
-                'time': request.form['time'],
-                'ingredients': convert_to_array(request.form['ingredients']),
-                'method': convert_to_array(request.form['method']),
-                'allergens': request.form.getlist['allergens']
-            })
+        'recipe_name': request.form['recipe_name'],
+        'image_url': request.form['image_url'],
+        # 'contributor': session['username'],
+        'category': request.form['category'],
+        'difficulty': request.form['difficulty'],
+        'cuisine': request.form['cuisine'],
+        'servings': request.form['servings'],
+        'time': request.form['time'],
+        'ingredients': convert_to_array(request.form['ingredients']),
+        'method': convert_to_array(request.form['method']),
+        'allergens': request.form.getlist['allergens']
+    })
     return redirect(url_for('all_recipes'))
 
 
-
 # Edit recipe information
-@ app.route('/edit_recipe/<recipe_id>', methods = ['GET'])
+@ app.route('/edit_recipe/<recipe_id>', methods=['GET'])
 def edit_recipe(recipe_id):
-    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('edit_recipe.html',
-                           recipe = recipe,
-                           categories = mongo.db.categories.find(),
-                           cuisines = mongo.db.cuisines.find(),
-                           levels = mongo.db.levels.find(),
-                           allergens = mongo.db.allergens.find())
+                           recipe=recipe,
+                           categories=mongo.db.categories.find(),
+                           cuisines=mongo.db.cuisines.find(),
+                           levels=mongo.db.levels.find(),
+                           allergens=mongo.db.allergens.find())
 
 
 # Update recipe data in MongoDB
-@ app.route('/update_recipe/<recipe_id>', methods = ['POST'])
+@ app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
-    recipes=mongo.db.recipes
+    recipes = mongo.db.recipes
     recipes.update({"_id": ObjectId(recipe_id)},
-        {
+                   {
         'recipe_name': request.form.get('recipe_name'),
         'category': request.form.get('category'),
         'difficulty': request.form.get('difficulty'),
@@ -127,6 +138,8 @@ def update_recipe(recipe_id):
     return redirect(url_for('all_recipes'))
 
 # delete recipes
+
+
 @ app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
@@ -136,11 +149,11 @@ def delete_recipe(recipe_id):
 # browse recipes
 @ app.route('/browse_recipes')
 def browse_recipes():
-    recipes=mongo.db.recipes.find()
-    return render_template('browse_recipes.html', recipes = recipes)
+    recipes = mongo.db.recipes.find()
+    return render_template('browse_recipes.html', recipes=recipes)
 
 
 if __name__ == '__main__':
-    app.run(host = os.environ.get('IP'),
-            port = int(os.environ.get('PORT')),
-            debug = True)
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)
