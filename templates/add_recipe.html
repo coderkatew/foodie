@@ -1,16 +1,53 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Textarea</label>
-        </div>
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="fas fa-utensils"></i>
+        <input
+          id="recipe_name"
+          name="recipe_name"
+          type="text"
+          class="validate"
+        />
+        <label for="icon_prefix">Recipe Name</label>
       </div>
-    </form>
-  </div>
+    </div>
+     <div class="row">
+      <div class="input-field col s6">
+        <select>
+          <option value="" disabled selected>Select a meal type</option>
+          {% for cat in categories %}
+          <option value="{{cat.category}}">{{cat.category}}</option>
+          {% endfor %}
+        </select>
+        <label>Meal Type:</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select>
+          <option value="" disabled selected>Select a category</option>
+          {% for level in levels %}
+          <option value="{{level.difficulty_level}}">{{level.difficulty_level}}</option>
+          {% endfor %}
+        </select>
+        <label>Difficulty:</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select>
+          <option value="" disabled selected>Select a cuisine</option>
+          {% for cuisine in cuisines %}
+          <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
+          {% endfor %}
+        </select>
+        <label>Cuisine:</label>
+      </div>
+    </div>
+  </form>
+</div>
 
 {% endblock %}
