@@ -36,30 +36,48 @@ def add_recipe():
                            allergens=mongo.db.allergens.find())
 
 
+# converts string from text input field to array by splitting the string at each new line break
+def convert_to_array(string):
+    array = string.split("\n")
+    return array
+
 # add recipe data to MongoDB
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    recipes.insert({
+                'recipe_name': request.form['recipe_name'],
+                'image_url': request.form['image_url'],
+                #'contributor': session['username'],
+                'category': request.form['category'],
+                'difficulty': request.form['difficulty'],
+                'cuisine': request.form['cuisine'],
+                'servings': request.form['servings'],
+                'time': request.form['time'],
+                'ingredients': convert_to_array(request.form['ingredients']),
+                'method': convert_to_array(request.form['method']),
+                'allergens': request.form.getlist['allergens']
+            })
     return redirect(url_for('all_recipes'))
 
 
+
 # Edit recipe information
-@app.route('/edit_recipe/<recipe_id>', methods=['GET'])
+@ app.route('/edit_recipe/<recipe_id>', methods=['GET'])
 def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('edit_recipe.html',
-                           recipe=recipe,
-                           categories=mongo.db.categories.find(),
-                           cuisines=mongo.db.cuisines.find(),
-                           difficulty=mongo.db.levels.find(),
-                           allergens=mongo.db.allergens.find())
+                           recipe = recipe,
+                           categories = mongo.db.categories.find(),
+                           cuisines = mongo.db.cuisines.find(),
+                           levels = mongo.db.levels.find(),
+                           allergens = mongo.db.allergens.find())
 
 
 # Update recipe data in MongoDB
-@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+@ app.route('/update_recipe/<recipe_id>', methods = ['POST'])
 def update_recipe(recipe_id):
-    recipes = mongo.db.recipes
+    recipes=mongo.db.recipes
     recipes.update({"_id": ObjectId(recipe_id)},
         {
         'recipe_name': request.form.get('recipe_name'),
@@ -74,6 +92,12 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('all_recipes'))
 
+# delete recipes
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('all_recipes'))
+    
 
 # browse recipes
 @app.route('/browse_recipes')
