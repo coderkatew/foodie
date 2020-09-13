@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
-<div class="row">
+<!-- Recipe Name -->
   <form class="col s12">
     <div class="row">
       <div class="input-field col s6">
@@ -14,7 +13,8 @@
         <label for="icon_prefix">Recipe Name</label>
       </div>
     </div>
-     <div class="row">
+    <!-- Meal Type -->
+    <div class="row">
       <div class="input-field col s6">
         <select>
           <option value="" disabled selected>Select a meal type</option>
@@ -25,17 +25,21 @@
         <label>Meal Type:</label>
       </div>
     </div>
+    <!-- Difficulty Level -->
     <div class="row">
       <div class="input-field col s6">
         <select>
-          <option value="" disabled selected>Select a category</option>
+          <option value="" disabled selected>Select a difficulty level</option>
           {% for level in levels %}
-          <option value="{{level.difficulty_level}}">{{level.difficulty_level}}</option>
+          <option value="{{level.difficulty_level}}"
+            >{{level.difficulty_level}}</option
+          >
           {% endfor %}
         </select>
         <label>Difficulty:</label>
       </div>
     </div>
+    <!-- Cuisine -->
     <div class="row">
       <div class="input-field col s6">
         <select>
@@ -47,6 +51,62 @@
         <label>Cuisine:</label>
       </div>
     </div>
+    <!-- Servings -->
+    <div class="row">
+      <div class="input-field col s6">
+        <input
+          id="servings"
+          name="servings"
+          type="number"
+          placeholder="Servings"
+          class="validate"
+          min="1"
+          required=""
+        />
+        <label>Number of Servings</label>
+      </div>
+    </div>
+    <!-- Time -->
+    <div class="row">
+      <div class="input-field col s6">
+        <label>Cooking Time (Mins)</label>
+        <input
+          id="cooking_time"
+          placeholder="Cooking time"
+          class="validate"
+          type="number"
+          min="1"
+          required=""
+        />
+      </div>
+    </div>
+    <!-- Ingredients -->
+    <div class="row">
+      <div class="col s12">
+        <h5>Ingredients:</h5>
+        <p>Add each ingredient on a new line</p>
+        <textarea
+          id="ingredients"
+          name="ingredients"
+          class="materialize-textarea validate"
+          required=""
+        ></textarea>
+      </div>
+    </div>
+    <!-- Method -->
+    <div class="row">
+      <div class="col s12">
+        <h5>Cooking instructions:</h5>
+        <p>Add each step on a new line</p>
+        <textarea
+          id="instructions"
+          name="instructions"
+          class="materialize-textarea validate"
+          required=""
+        ></textarea>
+      </div>
+    </div>
+    <!-- Allergans -->
     <div class="row">
       <div class="input-field col s6">
         <select multiple>
@@ -58,7 +118,9 @@
         <label>Allergens:</label>
       </div>
     </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+  </button>
   </form>
-</div>
+
 
 {% endblock %}
