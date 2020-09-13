@@ -32,7 +32,8 @@ def add_recipe():
                            title="Add Recipe",
                            categories=mongo.db.categories.find(),
                            levels=mongo.db.levels.find(),
-                           cuisines=mongo.db.cuisines.find())
+                           cuisines=mongo.db.cuisines.find(),
+                           allergens=mongo.db.allergens.find())
 
 
 # browse recipes

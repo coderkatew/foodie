@@ -47,6 +47,17 @@
         <label>Cuisine:</label>
       </div>
     </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select multiple>
+          <option value="" disabled selected>Check allergens</option>
+          {% for allergen in allergens %}
+          <option value="{{allergen.allergen}}">{{allergen.allergen}}</option>
+          {% endfor %}
+        </select>
+        <label>Allergens:</label>
+      </div>
+    </div>
   </form>
 </div>
 
