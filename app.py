@@ -36,6 +36,25 @@ def add_recipe():
                            allergens=mongo.db.allergens.find())
 
 
+# add recipe data to MongoDB
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    recipes = mongo.db.recipes
+    recipes.insert_one(request.form.to_dict())
+    return redirect(url_for('all_recipes'))
+
+
+# Edit recipe information
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('edit_recipe.html',
+                           recipe=recipe,
+                           categories=mongo.db.categories.find(),
+                           cuisines=mongo.db.cuisines.find(),
+                           difficulty=mongo.db.levels.find(),
+                           allergens=mongo.db.allergens.find())
+
 # browse recipes
 @app.route('/browse_recipes')
 def browse_recipes():

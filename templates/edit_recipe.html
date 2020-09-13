@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<h3>Add Recipe</h3>
+<h3>Edit Recipe</h3>
 <!-- Recipe Name -->
 <div class="container">
   <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
@@ -11,6 +11,7 @@
           name="recipe_name"
           type="text"
           class="validate"
+          value="{{recipe.recipe_name}}"
         />
         <label for="icon_prefix">Recipe Name</label>
       </div>
@@ -20,9 +21,11 @@
       <div class="input-field col s6">
         <select id="category" name="category">
           <option value="" disabled selected>Select a meal type</option>
-          {% for cat in categories %}
+          {% for cat in categories %} {% if cat.category == recipe.category%}
+          <option value="{{cat.category}}" selected>{{cat.category}}</option>
+          {% else %}
           <option value="{{cat.category}}">{{cat.category}}</option>
-          {% endfor %}
+          {% endif %} {% endfor %}
         </select>
         <label>Meal Type:</label>
       </div>
@@ -32,10 +35,12 @@
       <div class="input-field col s6">
         <select name="difficulty">
           <option value="" disabled selected>Select a difficulty level</option>
-          {% for level in levels %}
-          <option value="{{level.difficulty}}"
-            >{{level.difficulty}}</option
-          >
+           {% for level in levels %}
+           {% if level.difficulty == recipe.difficulty%}
+          <option value="{{level.difficulty}}" selected>{{level.difficulty}}</option>
+            {% else %}
+            <option value="{{level.difficulty}}">{{level.difficulty}}</option>
+          {% endif %} 
           {% endfor %}
         </select>
         <label>Difficulty:</label>
@@ -47,7 +52,11 @@
         <select name="cuisine">
           <option value="" disabled selected>Select a cuisine</option>
           {% for cuisine in cuisines %}
+            {% if cuisine.cuisine == recipe.cuisine%}
+          <option value="{{cuisine.cuisine}}" selected>{{cuisine.cuisine}}</option>
+             {% else %}
           <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
+          {% endif %} 
           {% endfor %}
         </select>
         <label>Cuisine:</label>
@@ -64,6 +73,7 @@
           class="validate"
           min="1"
           required=""
+          value="{{recipe.servings}}"
         />
         <label>Number of Servings</label>
       </div>
@@ -80,6 +90,7 @@
           type="number"
           min="1"
           required=""
+          value="{{recipe.time}}"
         />
       </div>
     </div>
@@ -93,6 +104,7 @@
           name="ingredients"
           class="materialize-textarea validate"
           required=""
+          value="{{recipe.ingredients}}"
         ></textarea>
       </div>
     </div>
@@ -106,6 +118,7 @@
           name="method"
           class="materialize-textarea validate"
           required=""
+          value="{{recipe.method}}"
         ></textarea>
       </div>
     </div>
@@ -115,14 +128,19 @@
         <select name="allergens" multiple>
           <option value="" disabled selected>Check allergens</option>
           {% for allergen in allergens %}
+          {% if allergen.allergen == recipe.allergen%}
+          <option value="{{allergen.allergen}}" selected>{{allergen.allergen}}</option>
+            {% else %}
           <option value="{{allergen.allergen}}">{{allergen.allergen}}</option>
+            {% endif %} 
           {% endfor %}
         </select>
         <label>Allergens:</label>
       </div>
     </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
-  </button>
+    <button class="btn waves-effect waves-light" type="submit" name="action">
+      Add Recipe
+    </button>
   </form>
 </div>
 
