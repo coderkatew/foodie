@@ -4,14 +4,31 @@
 <div class="container">
 <h1>All Recipes</h1>
     {% for recipe in recipes %}
-       <h2> {{recipe.recipe_name}}</h2>
-        <div class="col s6 ">
-            <h6><strong>Cooking time <br><span class="units">(min)</span></strong></h6>
-            <p>{{recipe.time}}</p>
-            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
-            <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"class="waves-effect waves-light btn">Delete</a>
-            </div>
-            </div>
+       
+           <!--<a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
+            <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"class="waves-effect waves-light btn">Delete</a>-->
+
+    <!--- Materialize -->
+    <div class="row">
+    <div class="col s12 m7">
+      <div class="recipe-card">
+        <div class="recipe-image">
+         {% if recipe.image_url %}
+                        <img height="200" width="200" src="{{recipe.image_url}}" alt="photo of dish"> 
+                        {% else %}
+                        <img height="200" width="200" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish">
+                        {% endif %}
+          <span class="card-title">{{recipe.recipe_name}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{recipe.category}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endfor %}
 
 {% endblock %}

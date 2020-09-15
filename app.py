@@ -137,9 +137,8 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('all_recipes'))
 
+
 # delete recipes
-
-
 @ app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
@@ -151,6 +150,20 @@ def delete_recipe(recipe_id):
 def browse_recipes():
     recipes = mongo.db.recipes.find()
     return render_template('browse_recipes.html', recipes=recipes)
+
+
+# view recipe
+@app.route('/view_recipe/recipe_id?=<recipe_id>')
+def view_recipe(recipe_id):
+    mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})
+    return render_template('view_recipe.html',
+                           recipe=mongo.db.recipes.find_one(
+                                  {"_id": ObjectId(recipe_id)}),
+                           categories=mongo.db.categories.find(),
+                           levels=mongo.db.levels.find(),
+                           cuisines=mongo.db.cuisines.find(),
+                           allergens=mongo.db.allergens.find())
 
 
 if __name__ == '__main__':

@@ -16,6 +16,17 @@
         <label for="icon_prefix">Recipe Name</label>
       </div>
     </div>
+     <!--Recipe Image-->
+            <div class="row">
+                <div class="input-field col s6">
+                        {% if recipe.image_url %}
+                        <img height="200" width="200" src="{{recipe.image_url}}" alt="photo of dish"> 
+                        {% else %}
+                        <img height="200" width="200" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish">
+                        {% endif %}
+                        <label for="image_url">Recipe Image</label>
+                    </div>
+                </div>
     <!-- Meal Type -->
     <div class="row">
       <div class="input-field col s6">

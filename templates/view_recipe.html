@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="recipe-image">
+            {% if recipe.image_url %}
+                <img height="200" width="200" src="{{recipe.image_url}}" alt="photo of dish"> 
+             {% else %}
+              <img height="200" width="200" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish">
+            {% endif %}
+
+
+
+{% endblock %}
