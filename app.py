@@ -55,8 +55,7 @@ def register():
             users.insert(
                 {'name': request.form['username'], 'password': hashpass})
             session['username'] = request.form['username']
-            return redirect(url_for('all_recipes'))        
-            
+            return redirect(url_for('all_recipes'))
         flash('Sorry,that username already exists.')
         return render_template('register.html')
 
@@ -145,25 +144,25 @@ def delete_recipe(recipe_id):
     return redirect(url_for('all_recipes'))
 
 
-# browse recipes
-@ app.route('/browse_recipes')
-def browse_recipes():
-    recipes = mongo.db.recipes.find()
-    return render_template('browse_recipes.html', recipes=recipes)
-
-
-# view recipe
+# view recipes
 @app.route('/view_recipe/recipe_id?=<recipe_id>')
 def view_recipe(recipe_id):
     mongo.db.recipes.find_one(
         {"_id": ObjectId(recipe_id)})
     return render_template('view_recipe.html',
                            recipe=mongo.db.recipes.find_one(
-                                  {"_id": ObjectId(recipe_id)}),
+                               {"_id": ObjectId(recipe_id)}),
                            categories=mongo.db.categories.find(),
-                           levels=mongo.db.levels.find(),
                            cuisines=mongo.db.cuisines.find(),
+                           levels=mongo.db.levels.find(),
                            allergens=mongo.db.allergens.find())
+
+
+# browse recipes
+@ app.route('/browse_recipes')
+def browse_recipes():
+    recipes = mongo.db.recipes.find()
+    return render_template('browse_recipes.html', recipes=recipes)
 
 
 if __name__ == '__main__':
