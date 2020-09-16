@@ -25,7 +25,7 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
     if 'username' in session:
-        return 'You are logged in as ' + session['username']
+        return redirect(url_for('all_recipes'))
 
     return render_template('login.html')
 

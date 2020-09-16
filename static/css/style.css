@@ -1,0 +1,20 @@
+
+/* -------- Nav Bar ----------*/
+
+nav {
+  background-color:black;
+}
+
+nav .brand-logo {
+  color: white;
+}
+
+nav ul a {
+  color: white;
+}
+
+nav ul a:hover,
+nav ul .active {
+  color: red;
+}
+
