@@ -158,13 +158,6 @@ def view_recipe(recipe_id):
                            allergens=mongo.db.allergens.find())
 
 
-# browse recipes
-@ app.route('/browse_recipes')
-def browse_recipes():
-    recipes = mongo.db.recipes.find()
-    return render_template('browse_recipes.html', recipes=recipes)
-
-
 # Logout
 @app.route('/logout')
 def logout():
