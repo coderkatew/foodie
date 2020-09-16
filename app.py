@@ -165,6 +165,15 @@ def browse_recipes():
     return render_template('browse_recipes.html', recipes=recipes)
 
 
+# Logout
+@app.route('/logout')
+def logout():
+    # removes the username from the session 
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
