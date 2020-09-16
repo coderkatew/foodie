@@ -134,7 +134,7 @@ def update_recipe(recipe_id):
         'method': request.form.get('method'),
         'allergens': request.form.get('allergens')
     })
-    return redirect(url_for('all_recipes'))
+    return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
 
 # delete recipes
