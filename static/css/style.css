@@ -1,15 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 body {
-    background-color: #FFFDD0;
+    background-color: #FBF4E1;
+    font-family: 'Indie Flower', cursive;
 }
 
 /* -------- Nav Bar ----------*/
 
 nav {
   background-color:black;
+  height: 10%;
 }
-
+ 
 nav .brand-logo {
   color: white;
+  font-family: 'Indie Flower', cursive;
+  font: 50%;
+  margin-left: 3%;
 }
 
 nav ul a {
@@ -21,3 +28,20 @@ nav ul .active {
   color: #D6204E;
 }
 
+/* ----- Buttons -----*/
+
+.waves-effect, .btn {
+    background-color: #D6204E;
+}
+
+/* ----- Login -----*/
+
+.form-group label {
+    color: black;
+    font-size: 120%;
+}
+
+#login {
+    padding: 5%;
+    max-width: 50%;
+}
