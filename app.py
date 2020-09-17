@@ -32,16 +32,19 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    users = mongo.db.users
-    login_user = users.find_one({'name': request.form['username']})
+    if request.method == 'POST':
+        users = mongo.db.users
+        login_user = users.find_one({'name': request.form['username']})
 
-    if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
-            session['username'] = request.form['username']
-        return redirect(url_for('all_recipes'))
+        if login_user:
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+                session['username'] = request.form['username']
+            return redirect(url_for('all_recipes'))
 
-    return 'Invalid username/password combination'
+        flash('Invalid username/password combination', category="message")
+        return render_template('login.html', title="Log In")
 
+    return render_template('login.html', title="Log In")
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -84,9 +87,8 @@ def convert_to_array(string):
     array = string.split("\n")
     return array
 
+
 # add recipe data to MongoDB
-
-
 @ app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes

@@ -45,3 +45,18 @@ nav ul .active {
     padding: 5%;
     max-width: 50%;
 }
+
+footer {
+    background-color:black;
+    color:white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    padding-right: 1%;
+}
+
+.social-icon {
+    background-color:white;
+}
