@@ -30,8 +30,23 @@ nav ul .active {
 
 /* ----- Buttons -----*/
 
-.waves-effect, .btn {
+.waves-effect.btn {
     background-color: #D6204E;
+}
+
+.waves-effect.btn:hover { 
+    background-color: rgb(253, 18, 77);
+    color: white;
+}
+
+/* ----- Recipe Cards----*/
+
+.row-all-recipes {
+    margin:0;
+}
+
+.recipe-title {
+    font-weight: bold;
 }
 
 /* ----- Login -----*/
