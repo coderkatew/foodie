@@ -40,7 +40,7 @@
   </div>
   <!-- Time -->
   <div>
-    <p><span>Time Required:</span> {{recipe.time}} Minutes</p>
+    <p><em>Time Required:</em> {{recipe.time}} Minutes</p>
   </div>
   <!-- Ingredients -->
   <div>
@@ -56,13 +56,13 @@
   <!-- Method -->
   <div>
   <h4>Method</h4>
-    <ul>
+    <ol>
       {% for step in recipe.method %}
       <li>
         {{step}}
       </li>
       {% endfor %}
-    </ul>
+    </ol>
   </div>
   <!-- Allergens -->
   <div>
