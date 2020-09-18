@@ -19,12 +19,14 @@
      <!--Recipe Image-->
             <div class="row">
                 <div class="input-field col s6">
-                        {% if recipe.image_url %}
-                        <img height="200" width="200" src="{{recipe.image_url}}" alt="photo of dish"> 
+                        {% if recipe.recipe_image %}
+                        <img height="200" width="200" src="{{recipe.recipe_image}}" alt="photo of dish"> 
                         {% else %}
-                        <input id="image_url" name="image_url" class="validate" type="url" minlength="10" placeholder="Image URL" pattern="https?://.+">
+                        <input type="file" class="image" name="recipe_image"  id="recipe-image"
+         accept="image/png, image/jpeg" required>
+        <label class="recipe-image-label" for="recipe_image">Recipe Image</label>
                         {% endif %}
-                        <label for="image_url">Recipe Image</label>
+                        <label for="recipe_image">Recipe Image</label>
                     </div>
                 </div>
     <!-- Meal Type -->

@@ -87,15 +87,22 @@ def convert_to_array(string):
     array = string.split("\n")
     return array
 
+@app.route('/uploads/<filename>', methods=['GET'])
+def upload(filename):
+    return mongo.send_file(filename)
+
 
 # add recipe data to MongoDB
-@ app.route('/insert_recipe', methods=['POST'])
+@ app.route('/insert_recipe', methods=['GET', 'POST'])
 def insert_recipe():
+    recipe_image = request.files['recipe_image']
+    if request.files:
+        mongo.save_file(recipe_image.filename, recipe_image)
     recipes = mongo.db.recipes
     recipes.insert({
         'recipe_name': request.form['recipe_name'],
-        'image_url': request.form['image_url'],
         # 'contributor': session['username'],
+        'recipe_image': recipe_image.filename,
         'category': request.form['category'],
         'difficulty': request.form['difficulty'],
         'cuisine': request.form['cuisine'],
@@ -103,7 +110,7 @@ def insert_recipe():
         'time': request.form['time'],
         'ingredients': convert_to_array(request.form['ingredients']),
         'method': convert_to_array(request.form['method']),
-        'allergens': request.form.getlist['allergens']
+        # 'allergens': request.form.getlist['allergens']
     })
     return redirect(url_for('all_recipes'))
 
