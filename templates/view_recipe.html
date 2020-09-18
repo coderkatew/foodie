@@ -1,50 +1,82 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <!-- Recipe Name -->
+  <div>
+    <h1>{{recipe.recipe_name}}</h1>
+  </div>
 
-{% block content %}
-<!-- Recipe Name -->
-<div>
-    <p>{{recipe.recipe_name}}</p>
-</div>
-
-<!-- Recipe Image -->
-<div class="recipe-image">
-          {% if recipe.recipe_image %}
-                <img class="recipe-image" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish"> 
-                {% else %}
-                <img height="100" width="100" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish">
-                {% endif %}
-            </div>
-<!-- Meal type -->
-<div>
-    <p>{{recipe.category}}</p>
-</div>
-<!-- Difficulty Level -->
-<div>
-    <p>{{recipe.difficulty}}</p>
-</div>
-<!-- Cuisine -->
-<div>
-    <p>{{recipe.cuisine}}</p>
-</div>
-<!-- Servings -->
-<div>
-    <p>{{recipe.servings}}</p>
-</div>
-<!-- Time -->
-<div>
-    <p>{{recipe.time}}</p>
-</div>
-<!-- Ingredients -->
-<div>
-    <p>{{recipe.ingredients}}</p>
-</div>
-<!-- Method -->
-<div>
-    <p>{{recipe.method}}</p>
-</div>
-<!-- Allergens -->
-<div>
+  <!-- Recipe Image -->
+  <div class="recipe-image">
+    {% if recipe.recipe_image %}
+    <img
+      class="recipe-image"
+      src="{{ url_for('upload', filename=recipe.recipe_image) }}"
+      alt="photo of dish"
+    />
+    {% else %}
+    <img
+      height="100"
+      width="100"
+      src="{{ url_for('static', filename='images/placeholder.png')}}"
+      alt="photo of dish"
+    />
+    {% endif %}
+  </div>
+  <!-- Meal type -->
+  <div>
+    <p>Meal Type: {{recipe.category}}</p>
+  </div>
+  <!-- Difficulty Level -->
+  <div>
+    <p>Difficulty: {{recipe.difficulty}}</p>
+  </div>
+  <!-- Cuisine -->
+  <div>
+    <p>Cuisine: {{recipe.cuisine}}</p>
+  </div>
+  <!-- Servings -->
+  <div>
+    <p>Serves: {{recipe.servings}}</p>
+  </div>
+  <!-- Time -->
+  <div>
+    <p><span>Time Required:</span> {{recipe.time}} Minutes</p>
+  </div>
+  <!-- Ingredients -->
+  <div>
+  <h4>Ingredients</h4>
+    <ul>
+      {% for ingredient in recipe.ingredients %}
+      <li>
+        {{ingredient}}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- Method -->
+  <div>
+  <h4>Method</h4>
+    <ul>
+      {% for step in recipe.method %}
+      <li>
+        {{step}}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- Allergens -->
+  <div>
     <p>{{recipe.allergens}}</p>
+  </div>
+  <a
+    href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+    class="waves-effect waves-light btn"
+    >Edit</a>
+    <a
+    href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+    class="waves-effect waves-light btn"
+    >Delete</a>
 </div>
+    
 
 {% endblock %}
