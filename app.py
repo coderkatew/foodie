@@ -101,7 +101,7 @@ def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert({
         'recipe_name': request.form['recipe_name'],
-        # 'contributor': session['username'],
+        'contributor': session['username'],
         'recipe_image': recipe_image.filename,
         'category': request.form['category'],
         'difficulty': request.form['difficulty'],
