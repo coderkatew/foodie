@@ -45,8 +45,24 @@
       </div>
     </div>
   </div>
+  
 
   {% endfor %}
 </div>
-
+<div class="pagination">
+<!--Pagination-->
+  <ul class="pagination">
+       <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    {% for page_num in pages %} 
+        {% if page_num == current_page %}
+        <li class="active"><a>{{ page_num }}</a></li>
+        {% else %}
+        <li class="waves-effect">
+        <a href="{{ url_for('all_recipes', current_page=page_num) }}">{{ page_num }}</a>
+        </li>
+        {% endif %} 
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock %}

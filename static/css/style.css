@@ -75,3 +75,10 @@ footer {
 .social-icon {
     background-color:white;
 }
+
+.pagination {
+    width:100%;
+    align-items: center;
+    margin:5%;
+}
+

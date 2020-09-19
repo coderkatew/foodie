@@ -1,9 +1,10 @@
 import os
 from flask import (Flask, render_template, redirect,
                    request, url_for, session, flash)
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
+import math
 
 # imports environment variables
 from os import path
@@ -18,6 +19,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = 'foodie'
 
 mongo = PyMongo(app)
+
 
 # Register and log in pages from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
 
@@ -46,6 +48,7 @@ def login():
 
     return render_template('login.html', title="Log In")
 
+
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -64,11 +67,21 @@ def register():
 
     return render_template('register.html')
 
-
-@ app.route('/all_recipes')
+    
+@app.route('/all_recipes')
 def all_recipes():
-    recipes = mongo.db.recipes.find()
-    return render_template('all_recipes.html', recipes=recipes)
+    recipes = mongo.db.recipes
+    limit_per_page = 6
+    current_page = int(request.args.get('current_page', 1))
+    # get total of all the recipes in db
+    total = recipes.count()
+    pages = range(1, int(math.ceil(total / limit_per_page)) + 1)
+    recipes = recipes.find().sort('_id', pymongo.ASCENDING).skip(
+        (current_page - 1)*limit_per_page).limit(limit_per_page)
+
+    return render_template("all_recipes.html", recipes=recipes,
+                           current_page=current_page,
+                           pages=pages, total=total)  
 
 
 # add a new recipe
