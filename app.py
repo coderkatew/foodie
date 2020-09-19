@@ -119,12 +119,15 @@ def insert_recipe():
 @ app.route('/edit_recipe/<recipe_id>', methods=['GET'])
 def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    list_ingredients = '\n'.join(recipe['ingredients'])
     return render_template('edit_recipe.html',
                            recipe=recipe,
                            categories=mongo.db.categories.find(),
                            cuisines=mongo.db.cuisines.find(),
                            levels=mongo.db.levels.find(),
-                           allergens=mongo.db.allergens.find())
+                           allergens=mongo.db.allergens.find(),
+                           list_ingredients=list_ingredients)
+
 
 
 # Update recipe data in MongoDB
