@@ -26,13 +26,13 @@
 		<div>
 			<p>Meal Type: {{recipe.category}}</p>
 		</div>
+        <!-- Cuisine -->
+		<div>
+			<p>Cuisine: {{recipe.cuisine}}</p>
+		</div>
 		<!-- Difficulty Level -->
 		<div>
 			<p>Difficulty: {{recipe.difficulty}}</p>
-		</div>
-		<!-- Cuisine -->
-		<div>
-			<p>Cuisine: {{recipe.cuisine}}</p>
 		</div>
 		<!-- Servings -->
 		<div>
@@ -40,7 +40,11 @@
 		</div>
 		<!-- Time -->
 		<div>
-			<p><em>Time Required:</em> {{recipe.time}} Minutes</p>
+			<p>Time Required: {{recipe.time}} Minutes</p>
+		</div>
+        <!-- Temperature -->
+		<div>
+			<p>Temperature: {{recipe.temperature}} &#176;C</p>
 		</div>
 		<!-- Ingredients -->
 		<div>
@@ -65,15 +69,23 @@
 			</ol>
 		</div>
 		<!-- Allergens -->
-		<div>
-			<p>{{recipe.allergens}}</p>
+        <div class="allergens">
+			<h5>Allergens</h5>
+			<ul>
+				{% for allergens in recipe.allergens %}
+				<li>
+					{{allergen}}
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+        <div>
 			<p class="contributor">Added by {{recipe.contributor}}</p>
 		</div>
+        <div>
 		<a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
-		
  <!-- Materialize Modal Trigger -->
   <a class="waves-effect waves-light btn modal-trigger" href="#delete-modal">Delete</a>
-
   <!-- Materialize Modal Structure -->
   <div id="delete-modal" class="modal">
     <div class="modal-content">
@@ -86,7 +98,6 @@
     </div>
   </div>
 		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn">View All Recipes</a>
-
 	</div>
 
    	{% endblock %}
