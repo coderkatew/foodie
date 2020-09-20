@@ -1,80 +1,76 @@
 {% extends 'base.html' %} {% block content %}
+
+<div id="recipe_form" class="container">
 <h3>Add Recipe</h3>
-<!-- Recipe Name -->
-<div class="container">
   <form
     action="{{ url_for('insert_recipe') }}"
     method="POST"
     class="col s12"
     enctype="multipart/form-data"
   >
+  <!-- Recipe Name -->
     <div class="row">
       <div class="input-field col s6">
-        <i class="fas fa-utensils"></i>
+         <h5>Recipe Name</h5>
         <input
           id="recipe_name"
           name="recipe_name"
           type="text"
           class="validate"
         />
-        <label for="icon_prefix">Recipe Name</label>
       </div>
     </div>
     <!--Recipe Image-->
     <div class="row">
-      <div class="recipe-image">
-        <input
-          type="file"
-          class="image"
+        <div class="file-field input-field recipe-image col s6">
+      <div class="btn">
+        <span>Upload Recipe Image</span>
+        <input type="file" class="image"
           name="recipe_image"
           id="recipe-image"
           accept="image/png, image/jpeg"
-          required
-        />
-        <label class="recipe-image-label" for="recipe_image"
-          >Recipe Image</label
-        >
+          required>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
       </div>
     </div>
+      </div>
     <!-- Meal Type -->
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s3">
         <select id="category" name="category">
-          <option value="" disabled selected>Select a meal type</option>
+          <option value="" disabled selected>Select meal type</option>
           {% for cat in categories %}
           <option value="{{cat.category}}">{{cat.category}}</option>
           {% endfor %}
         </select>
         <label>Meal Type:</label>
       </div>
-    </div>
-    <!-- Difficulty Level -->
-    <div class="row">
-      <div class="input-field col s6">
-        <select name="difficulty">
-          <option value="" disabled selected>Select a difficulty level</option>
-          {% for level in levels %}
-          <option value="{{level.difficulty}}">{{level.difficulty}}</option>
-          {% endfor %}
-        </select>
-        <label>Difficulty:</label>
-      </div>
-    </div>
     <!-- Cuisine -->
-    <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s3">
         <select name="cuisine">
-          <option value="" disabled selected>Select a cuisine</option>
+          <option value="" disabled selected>Select cuisine</option>
           {% for cuisine in cuisines %}
           <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
           {% endfor %}
         </select>
-        <label>Cuisine:</label>
+        <label>Cuisine</label>
       </div>
     </div>
-    <!-- Servings -->
+    <!-- Difficulty Level -->
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s3">
+        <select name="difficulty">
+          <option value="" disabled selected>Select difficulty level</option>
+          {% for level in levels %}
+          <option value="{{level.difficulty}}">{{level.difficulty}}</option>
+          {% endfor %}
+        </select>
+        <label>Difficulty</label>
+      </div>
+    <!-- Servings -->
+      <div class="input-field col s3">
         <input
           id="servings"
           name="servings"
@@ -89,7 +85,7 @@
     </div>
     <!-- Time -->
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s3">
         <label>Cooking Time (Mins)</label>
         <input
           id="time"
@@ -101,10 +97,22 @@
           required=""
         />
       </div>
+    <!-- Temperature -->
+      <div class="input-field col s3">
+        <label>Temperature (Degrees)</label>
+        <input
+          id="temperature"
+          name="temperature"
+          placeholder="Temperature"
+          class="validate"
+          type="number"
+          min="0"
+        />
+      </div>
     </div>
     <!-- Ingredients -->
     <div class="row">
-      <div class="col s12">
+      <div class="col s10">
         <h5>Ingredients:</h5>
         <p>Add each ingredient on a new line</p>
         <textarea
@@ -117,7 +125,7 @@
     </div>
     <!-- Method -->
     <div class="row">
-      <div class="col s12">
+      <div class="col s10">
         <h5>Cooking instructions:</h5>
         <p>Add each step on a new line</p>
         <textarea

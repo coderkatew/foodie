@@ -44,6 +44,20 @@ nav ul .active {
     width: 100%;
 }
 
+/* ----- Forms -----*/
+.input-field label {
+     color: black;
+     font-size: .83em;
+     font-weight: bolder;
+   }
+.btn {
+    background-color: #D6204E;
+}
+
+.recipe-section {
+    max-width:50%;
+}
+
 /* ----- Buttons -----*/
 
 .waves-effect.btn {
