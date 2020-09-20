@@ -27,14 +27,22 @@ nav ul .active {
   color: #D6204E;
 }
 
-/* ----- Login Page -----*/
-#login.container{
-    width:100%;
-    margin: 0;
+/* ----- Login and Register -----*/
+
+.form-group label {
+    color: black;
+    font-size: 120%;
 }
 
+#login, #register {
+    padding: 5%;
+    max-width: 100%;
+}
 
-
+#login.container, #register.container {
+    margin: 0;
+    width: 100%;
+}
 
 /* ----- Buttons -----*/
 
@@ -57,17 +65,7 @@ nav ul .active {
     font-weight: bold;
 }
 
-/* ----- Login -----*/
 
-.form-group label {
-    color: black;
-    font-size: 120%;
-}
-
-#login {
-    padding: 5%;
-    max-width: 50%;
-}
 
 footer {
     background-color:black;
