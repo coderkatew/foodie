@@ -1,8 +1,12 @@
 
 {% extends 'index.html' %} {% block content %}
 <div id="login" class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+    <div class="login-row">
+    <div class="column">
+    <img src="{{ url_for('static', filename='images/login.jpg') }}" alt="photo of red curry dish" />
+    <p>A recipe sharing community for food enthusiasts</p>
+    </div>
+        <div class="column">
             <form method=POST action="{{ url_for('login')}}">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>

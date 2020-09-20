@@ -9,7 +9,6 @@ body {
 
 nav {
   background-color:black;
-  height: 10%;
 }
  
 nav .brand-logo {
@@ -27,6 +26,15 @@ nav ul a:hover,
 nav ul .active {
   color: #D6204E;
 }
+
+/* ----- Login Page -----*/
+#login.container{
+    width:100%;
+    margin: 0;
+}
+
+
+
 
 /* ----- Buttons -----*/
 
@@ -68,8 +76,15 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    text-align: right;
     padding-right: 1%;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    text-align: right;
 }
 
 .social-icon {
@@ -82,3 +97,9 @@ footer {
     margin:5%;
 }
 
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
