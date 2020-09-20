@@ -76,8 +76,23 @@ nav ul .active {
     font-weight: bold;
 }
 
+.recipe-image {
+    max-width:100px;
+    max-height:100px;
+}
 
+/* ---- Pagination ----*/
 
+.material-icons {
+    color: black;
+} 
+
+.current-page {
+    background-color: #D6204E;
+    border-radius: 4px;
+} 
+
+/* ---- Footer ----*/
 footer {
     background-color:black;
     color:white;
@@ -85,7 +100,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding-right: 1%;
+    padding-right: 0;
 }
 
 .footer-left {
