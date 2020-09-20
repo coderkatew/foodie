@@ -123,7 +123,7 @@ def insert_recipe():
         'time': request.form['time'],
         'ingredients': convert_to_array(request.form['ingredients']),
         'method': convert_to_array(request.form['method']),
-        # 'allergens': request.form.getlist['allergens']
+        'allergens': convert_to_array(request.form['allergens'])
     })
     return redirect(url_for('all_recipes'))
 
@@ -182,6 +182,25 @@ def view_recipe(recipe_id):
                            levels=mongo.db.levels.find(),
                            allergens=mongo.db.allergens.find())
 
+# Credit to https://stackoverflow.com/questions/48371016/pymongo-how-to-use-full-text-search
+@app.route('/search_recipes', methods=['POST'])
+def search_recipes():  
+    keyword = request.form["keyword"]
+        
+    # creates index in MongoDB
+    mongo.db.recipes.create_index([("$**", 'text')])
+
+    #Search result sorted by upvotes descending and after by number of views descending    
+    recipes = mongo.db.recipes.find({"$text":{"$search": keyword}})
+            
+    return render_template('all_recipes.html',
+                            username=session['username'], 
+                            recipes = recipes, 
+                            categories = mongo.db.categories.find(), 
+                            cuisines=mongo.db.cuisines.find(), 
+                            levels=mongo.db.levels.find(), 
+                            allergens=mongo.db.allergens.find(), 
+                            recipe_total=recipes.count()) 
 
 # Logout
 @app.route('/logout')

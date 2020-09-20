@@ -1,7 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
   <h1>All Recipes</h1>
-
+<form method="POST" action="{{url_for('search_recipes')}}">
+        <div class="input-field">
+          <input id="keyword" name="keyword" type="search" required>
+          <label class="label-icon" for="keyword"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
   {% for recipe in recipes %}
 
   <!-- Adapted Materialize Card -->
