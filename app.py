@@ -202,6 +202,20 @@ def search_recipes():
                             allergens=mongo.db.allergens.find(), 
                             recipe_total=recipes.count()) 
 
+
+@ app.route('/my_recipes/<username>', methods=['GET'])
+def my_recipes(username):
+    current_user = mongo.db.users.find_one({'name': session['username']})['_id']
+    profile_name = mongo.db.users.find_one({'name': session['username']})['name']
+    
+    contributor_recipes = mongo.db.recipes.find({'contributor': profile_name})
+    
+    total_recipes = contributor_recipes.count()
+    return render_template('my_recipes.html',
+                           contributor_recipes=contributor_recipes,
+                           username=profile_name,
+                           total_recipes=total_recipes)
+
 # Logout
 @app.route('/logout')
 def logout():

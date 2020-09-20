@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 center">
+            <h2>Hello <span>{{ username }}</span>!</h2>
+        </div>
+    </div>
+    <div class="col s12">
+        <h4>My Recipes</h4>
+        {% if total_recipes > 0 %}
+        <h6>You've added {{ total_recipes }} recipe(s) to Foodie!</h6>
+        {% else %}
+        <h6>You haven't added any recipes yet.</h6>
+        <a href="{{ url_for('add_recipe') }}" class="btn">Let's Get Started!</a>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="card-image">
+            {% for recipe in contributor_recipes %}
+  <div class="row">
+    <div class="col 3">
+      <div class="recipe-image">
+        {% if recipe.recipe_image %}
+        <img
+          class="recipe-image"
+          src="{{ url_for('upload', filename=recipe.recipe_image) }}"
+          alt="photo of dish"
+        />
+        {% else %}
+        <img
+          height="100"
+          width="100"
+          src="{{ url_for('static', filename='images/placeholder.png')}}"
+          alt="photo of dish"
+        />
+        {% endif %}
+      </div>
+    </div>
+    <div class="col s6">
+      <div class="card-content">
+        <h4 class="recipe-title">{{recipe.recipe_name}}</h4>
+        <p>{{recipe.category}}</p>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="card-action">
+        <a
+          href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"
+          class="waves-effect waves-light btn"
+          >View</a
+        >
+        <a
+          href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+          class="waves-effect waves-light btn"
+          >Edit</a
+        >
+      </div>
+    </div>
+  </div>
+            {% endfor %}
+        </div>
+</div>
+
+   	{% endblock %}
