@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css')}}"
-      type="text/css"
-    />
-    <meta name="author" content="Kate Walsh" />
-    <link
-      rel="icon"
-      href="{{ url_for('static', filename='images/favicon.png')}}"
-      sizes="16x16"
-      type="image/png"
-    />
-    <title>Foodie</title>
-  </head>
-  <body>
-    <header>
-      <div class="navbar-fixed">
-        <nav class="nav-bar">
-          <div class="nav-wrapper">
-            <a href="{{url_for('all_recipes')}}" class="brand-logo">Foodie</a>
-            <ul class="right hide-on-med-and-down">
-              <li><a href="{{url_for('all_recipes')}}">All Recipes</a></li>
-              <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-              <li><a href="{{url_for('my_recipes', username=session.username)}}">My Recipes</a></li>
-              <li><a href="{{url_for('logout')}}">Log Out</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
-    {% block content %} {% endblock %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <!---- Script initializing Materialize elements -->
-    <script>
-      $(document).ready(function () {
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+		type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css" />
+	<meta name="author" content="Kate Walsh" />
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" sizes="16x16" type="image/png" />
+	<title>Foodie</title>
+</head>
+
+<body>
+	<header>
+		<div class="navbar-fixed">
+			<nav class="nav-bar">
+				<div class="nav-wrapper">
+					<a href="{{url_for('all_recipes')}}" class="brand-logo">Foodie</a>
+					<ul class="right hide-on-med-and-down">
+						<li><a href="{{url_for('all_recipes')}}">All Recipes</a></li>
+						<li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+						<li><a href="{{url_for('my_recipes', username=session.username)}}">My Recipes</a></li>
+						<li><a href="{{url_for('logout')}}">Log Out</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+    <main class="content">
+	{% block content %} {% endblock %}
+    </main>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<!---- Script initializing Materialize elements -->
+	<script>
+		$(document).ready(function () {
         $("select").material_select();
       });
-    </script>
-    <footer class="footer">
-    <div class="row footer-content">
-        <div class="col s5 m6">
-        <p class="footer-left">Food is for sharing!</p>
-        </div>
-      <div class="col s7 m4">
-        <p class="footer-right">© 2020 Foodie</p>
-      </div>
-      </div>
-    </footer>
-     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  </body>
+	</script>
+	<footer class="footer">
+		<div class="row footer-content">
+			<div class="col s6">
+				<ul class="social-links">
+			<li>
+				<a href="https://www.instagram.com" target="_blank">
+					<i class="fab fa-instagram" aria-hidden="true"></i></a>
+			</li>
+            <li>
+				<a href="https://www.pinterest.com" target="_blank">
+					<i class="fab fa-pinterest" aria-hidden="true"></i></a>
+			</li>
+			<li>
+				<a href="https://www.facebook.com" target="_blank">
+					<i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+			</div>
+			<div class="col s6">
+				<p class="footer-right">© 2020 Foodie</p>
+			</div>
+		</div>
+	</footer>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
 </html>
