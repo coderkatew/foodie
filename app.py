@@ -35,15 +35,18 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
+        session["username"] = request.form["username"]
         users = mongo.db.users
         login_user = users.find_one({'name': request.form['username']})
 
         if login_user:
-            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
-                session['username'] = request.form['username']
-            return redirect(url_for('all_recipes'))
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'),
+            login_user['password']) == login_user['password']:
+                
+             return redirect(url_for('all_recipes'))
 
         flash('Invalid username/password combination', category="message")
+        session.pop('username', None)
         return render_template('login.html', title="Log In")
 
     return render_template('login.html', title="Log In")
