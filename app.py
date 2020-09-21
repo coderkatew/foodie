@@ -124,6 +124,7 @@ def insert_recipe():
         'cuisine': request.form['cuisine'],
         'servings': request.form['servings'],
         'time': request.form['time'],
+        'temperature': request.form.get('temperature'),
         'ingredients': convert_to_array(request.form['ingredients']),
         'method': convert_to_array(request.form['method']),
         'allergens': convert_to_array(request.form['allergens'])
@@ -153,11 +154,13 @@ def update_recipe(recipe_id):
     recipes.update({"_id": ObjectId(recipe_id)},
                    {
         'recipe_name': request.form.get('recipe_name'),
+        'recipe_image': recipe_image.filename,
         'category': request.form.get('category'),
         'difficulty': request.form.get('difficulty'),
         'cuisine': request.form.get('cuisine'),
         'servings': request.form.get('servings'),
         'time': request.form.get('time'),
+        'temperature': request.form.get('temperature'),
         'ingredients': request.form.get('ingredients'),
         'method': request.form.get('method'),
         'allergens': request.form.get('allergens')
