@@ -12,6 +12,7 @@
         {% else %}
         <h6>You haven't added any recipes yet.</h6>
         <a href="{{ url_for('add_recipe') }}" class="btn">Let's Get Started!</a>
+        <a href="{{ url_for('all_recipes') }}" class="btn">Browse Recipes</a>
         {% endif %}
     </div>
     <div class="row">
