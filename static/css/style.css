@@ -34,6 +34,15 @@ nav ul .active {
   color: #D6204E;
 }
 
+i.material-icons {
+    color:white;
+}
+
+#mobile-demo.side-nav {
+    background-color: #FBF4E1;
+    color:black;
+}
+
 /* ----- Login and Register -----*/
 
 .form-group label {
@@ -57,9 +66,17 @@ nav ul .active {
      font-size: .83em;
      font-weight: bolder;
    }
+
 .btn {
     background-color: #D6204E;
 }
+
+div.input-field input:focus {
+   border-bottom: 1px solid purple;
+  
+ }
+
+
 
 
 /* ----- Buttons -----*/
@@ -151,10 +168,45 @@ footer {
     align-items: center;
     margin:5%;
 }
-
+/*--------------- Media Queries --------------*/
 
 @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
+
+
+nav {
+    height: 60px;
+    line-height: 60px;
   }
+
+nav .brand-logo {
+  margin-left: 0;
+}
+
+
+img {
+    max-width:100%;
+}
+
+.login-image, .register-image {
+    display: none;
+  }
+
+#login.container, #register.container {
+    align-content: center;
+    width: 100%;
+}
+
+footer {
+    max-width: 100%;
+    max-height: 50px;    
+    padding:1%;
+}
+
+.social-links {
+  margin: 0;
+  
+}
+
+.footer-right {
+    margin:0;
 }

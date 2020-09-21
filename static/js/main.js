@@ -1,5 +1,7 @@
 // Initialize modal
 
 $(document).ready(function() {
-    $('.modal').modal();
+     $('.modal').modal();
+     $(".button-collapse").sideNav();
+    
     });
