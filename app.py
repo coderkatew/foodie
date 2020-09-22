@@ -162,6 +162,7 @@ def update_recipe(recipe_id):
     recipes.update_one({"_id": ObjectId(recipe_id)},{"$set":
         {
         'recipe_name': request.form['recipe_name'],
+        'contributor': session['username'],
         'recipe_image': recipe_image.filename,
         'category': request.form['category'],
         'difficulty': request.form['difficulty'],
