@@ -1,4 +1,4 @@
-<img src="{{ url_for('static', filename='images/foodie-cover.png') }}" style="max-width:100%;">
+![Cover Image](/static/images/foodie-cover.png)
 
 [Foodie Website Link](https://foodie-project.herokuapp.com/)
 
