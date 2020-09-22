@@ -110,6 +110,12 @@ div.input-field input:focus {
     max-height:100px;
 }
 
+.recipe-image-view {
+    max-width:300px;
+    max-height:300px;
+}
+
+
 /* ---- Pagination ----*/
 
 .material-icons {
@@ -180,11 +186,6 @@ nav {
 
 nav .brand-logo {
   margin-left: 0;
-}
-
-
-img {
-    max-width:100%;
 }
 
 .login-image, .register-image {
