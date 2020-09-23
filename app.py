@@ -149,7 +149,6 @@ def edit_recipe(recipe_id):
                            existing_method=existing_method)
 
 
-
 # Update recipe data in MongoDB
 @ app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
 def update_recipe(recipe_id):
@@ -171,7 +170,7 @@ def update_recipe(recipe_id):
         'temperature': request.form['temperature'],
         'ingredients': convert_to_array(request.form['ingredients']),
         'method': convert_to_array(request.form['method']),
-        'allergens': convert_to_array(request.form['allergens'])
+        'allergens': convert_to_array(request.form['allergens']),
     }})
     if recipe_image.filename != "":   
                 recipes.update_one({"_id":ObjectId(recipe_id)},{ "$set":{'recipe_image':recipe_image.filename,}}) 
