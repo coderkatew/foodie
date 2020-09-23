@@ -29,6 +29,16 @@
       type="image/png"
     />
     <title>Foodie</title>
+    <!---- https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/ -->
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
   </head>
 
   <body>

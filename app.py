@@ -21,7 +21,7 @@ app.config["MONGO_DBNAME"] = 'foodie'
 mongo = PyMongo(app)
 
 
-# Register and log in pages from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
+# Register and login pages from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
 
 
 @app.route('/')
@@ -45,7 +45,7 @@ def login():
                 
              return redirect(url_for('all_recipes'))
 
-        flash('Invalid username/password combination', category="message")
+        flash('Invalid username/password combination')
         session.pop('username', None)
         return render_template('login.html', title="Log In")
 
@@ -163,7 +163,6 @@ def update_recipe(recipe_id):
         {
         'recipe_name': request.form['recipe_name'],
         'contributor': session['username'],
-        'recipe_image': recipe_image.filename,
         'category': request.form['category'],
         'difficulty': request.form['difficulty'],
         'cuisine': request.form['cuisine'],
