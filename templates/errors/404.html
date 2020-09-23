@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 center-align">
+      <h1> 
+        <span>404</span> error
+      </h1>
+      <h3>
+        Sorry, this page cannot be found.
+      </h3>
+      <a href="{{ url_for('login') }}">Go Back</a>.
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
