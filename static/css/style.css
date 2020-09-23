@@ -47,7 +47,10 @@ i.material-icons {
 
 .searchbar {
     width:50%;
+    margin-bottom:5%;
+    text-align:right;
 }
+
 
 /* ----- Login and Register -----*/
 
@@ -98,7 +101,7 @@ i.material-icons {
 /* ----- Recipe Cards----*/
 
 .row-all-recipes {
-    margin:0;
+    padding-top:5%;
 }
 
 .recipe-title {
@@ -120,11 +123,33 @@ i.material-icons {
     padding: 3%;
 }
 
+#recipe-card {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.card-action {
+    padding-top: 40%;
+}
+
+.card-time {
+    text-align: center;
+}
+
+.recipe-details {
+    padding-top:5%;
+}
+
+i.all-recipes {
+    color:black;
+}
 
 /* ---- Pagination ----*/
 
 .material-icons {
     color: black;
+
 } 
 
 .current-page {
@@ -176,8 +201,11 @@ footer {
 
 .pagination {
     width:100%;
-    align-items: center;
-    margin:5%;
+    text-align: center;
+}
+
+i.pagination {
+    color: black;
 }
 /*--------------- Media Queries --------------*/
 
