@@ -247,7 +247,12 @@ def logout():
 @app.errorhandler(404)
 def error_404(error):
     return render_template('errors/404.html', error=True,
-                           title="Page not found"), 404
+                           title="Page Not Found"), 404
+
+@app.errorhandler(405)
+def error_405(error):
+    return render_template('errors/405.html', error=True,
+                           title="Method Not Allowed"), 405
 
 
 @app.errorhandler(500)
