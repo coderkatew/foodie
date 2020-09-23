@@ -1,13 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
+    <div class="back-button">
+    <a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn">Back to Recipes</a>
+    </div>
 	<!-- Recipe Name -->
 	<div>
 		<h1>{{recipe.recipe_name}}</h1>
 	</div>
-
 	<!-- Recipe Image -->
     <div class="row">
-	<div class="recipe-image">
 		{% if recipe.recipe_image %}
 		<img
       class="recipe-image-view"
@@ -23,9 +24,7 @@
     />
     {% endif %}
   </div>
-  </div>
 		<!-- Meal type -->
-        <div class="row">
 		<div>
 			<p>Meal Type: {{recipe.category}}</p>
 		</div>
@@ -37,7 +36,6 @@
              <p>Cuisine: - </p> 
              {% endif %}
 		</div>
-        </div>
         <div class="row">
 		<!-- Difficulty Level -->
 		<div>
@@ -90,6 +88,7 @@
 			<h5>Allergens</h5>
 			<ul>
 				{% if recipe.allergens %}
+                {% for allergen in recipe.allergens %}
 				<li>
 					{{allergen}}
 				</li>
@@ -97,6 +96,7 @@
                  <li>
 					No known allergens.
 				</li>
+                {% endfor %}
 				{% endif %}
 			</ul>
 		</div>

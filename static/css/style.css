@@ -43,6 +43,12 @@ i.material-icons {
     color:black;
 }
 
+/* ----- Search Bar-----*/
+
+.searchbar {
+    width:50%;
+}
+
 /* ----- Login and Register -----*/
 
 .form-group label {
@@ -70,12 +76,6 @@ i.material-icons {
 .btn {
     background-color: #D6204E;
 }
-
-div.input-field input:focus {
-   border-bottom: 1px solid purple;
-  
- }
-
 
 
 
@@ -106,13 +106,18 @@ div.input-field input:focus {
 }
 
 .recipe-image {
-    max-width:100px;
-    max-height:100px;
+    max-width:150px;
+    max-height:150px;
 }
 
 .recipe-image-view {
     max-width:300px;
     max-height:300px;
+}
+
+.back-button {
+    text-align:right;
+    padding: 3%;
 }
 
 
