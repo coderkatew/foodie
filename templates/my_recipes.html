@@ -3,26 +3,32 @@
 <div class="back-button">
 		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Recipes</a>
 	</div>
-    <div class="row">
-        <div class="col s12 center">
-            <h2>Hello, <span>{{ username }}</span>!</h2>
-        </div>
+    <div class="row center-align">
+        <h2>My Recipes</h2>
     </div>
     <div class="col s12">
-        <h4>My Recipes</h4>
         {% if total_recipes > 0 %}
-        <h6>You've added {{ total_recipes }} recipe(s) to Foodie!</h6>
+        <div class="my-recipe-text">
+            <h5>Hello, <span>{{ username }}</span>! You've added {{ total_recipes }} recipe(s) to Foodie!</h5>
+        </div>
         {% else %}
-        <h6>You haven't added any recipes yet.</h6>
+        <div class="no-recipe-text">
+        <h5>Hello, <span>{{ username }}</span>! You haven't added any recipes yet.</h5>
+        </div>
+        <div class="row center-align">
         <a href="{{ url_for('add_recipe') }}" class="btn">Let's Get Started!</a>
+        </div>
+        <div class="row center-align">
         <a href="{{ url_for('all_recipes') }}" class="btn">Browse Recipes</a>
+        </div>
         {% endif %}
     </div>
     <div class="row">
         <div class="card-image">
             {% for recipe in contributor_recipes %}
-  <div class="row">
-    <div class="col 3">
+  <!-- Adapted Materialize Card -->
+  <div id="recipe-card" class="row">
+    <div class="col 12" id="recipe-card-image">
       <div class="recipe-image">
         {% if recipe.recipe_image %}
         <img
@@ -40,14 +46,27 @@
         {% endif %}
       </div>
     </div>
-    <div class="col s6">
+    <div class="col s9">
       <div class="card-content">
+        <div>
         <h4 class="recipe-title">{{recipe.recipe_name}}</h4>
-        <p>{{recipe.category}}</p>
+        </div>
+        <div class="row recipe-details">
+          <div class="col s3.5">
+        <p><i class="fas fa-utensils all-recipes"></i> {{recipe.category}}</p>
+        </div>
+        <div class="col s3.5">
+        <p class="level"><i class="fas fa-signal"></i> {{recipe.difficulty}}</p>
+        </div>
+         <div class="col s3.5">
+        <p class="card-time"><i class="far fa-clock"></i> {{recipe.time}} mins</p>
+        </div>
+        </div>
       </div>
     </div>
-    <div class="col s3">
+    <div class="col s12">
       <div class="card-action">
+      <div class="row">
         <a
           href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"
           class="waves-effect waves-light btn"
@@ -59,9 +78,13 @@
           >Edit</a
         >
       </div>
+      </div>
     </div>
   </div>
-            {% endfor %}
+  
+
+  {% endfor %}
+</div>
         </div>
 </div>
 
