@@ -280,7 +280,7 @@ div.row.register-form {
     margin:2%;
 }
 
-.recipe-card-image {
+#recipe-card-image {
     padding:2% 0 2% 22%;
 }
 
@@ -326,6 +326,15 @@ div.row.view-actions {
     padding: 0 0 5% 15%;
     margin:0;
 }
+
+/*-- Media Queries - Add Recipe -----*/
+
+#recipe_form.container {
+    margin:0;
+    padding: 8%;
+}
+
+
 
 /*-- Media Queries - Footer -----*/
 

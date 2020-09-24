@@ -5,6 +5,7 @@
 		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Recipes</a>
 	</div>
 <h3>Add Recipe</h3>
+<div class="add-form">
   <form
     action="{{ url_for('insert_recipe') }}"
     method="POST"
@@ -12,7 +13,7 @@
     enctype="multipart/form-data"
   >
   <!-- Recipe Name -->
-    <div class="row">
+    <div class="row add-name">
       <div class="input-field col s6">
          <h5>Recipe Name</h5>
         <input
@@ -40,10 +41,10 @@
     </div>
       </div>
     <!-- Meal Type -->
-    <div class="row">
-      <div class="input-field col s3">
+    <div class="row add-details">
+      <div class="input-field col">
         <select id="category" name="category">
-          <option value="" disabled selected>Select meal type</option>
+          <option value="" disabled selected>Select</option>
           {% for cat in categories %}
           <option value="{{cat.category}}">{{cat.category}}</option>
           {% endfor %}
@@ -51,9 +52,9 @@
         <label>Meal Type:</label>
       </div>
     <!-- Cuisine -->
-      <div class="input-field col s3">
+      <div class="input-field col">
         <select name="cuisine">
-          <option value="" disabled selected>Select cuisine</option>
+          <option value="" disabled selected>Select</option>
           {% for cuisine in cuisines %}
           <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
           {% endfor %}
@@ -63,9 +64,9 @@
     </div>
     <!-- Difficulty Level -->
     <div class="row">
-      <div class="input-field col s3">
+      <div class="input-field col">
         <select name="difficulty">
-          <option value="" disabled selected>Select difficulty level</option>
+          <option value="" disabled selected>Select</option>
           {% for level in levels %}
           <option value="{{level.difficulty}}">{{level.difficulty}}</option>
           {% endfor %}
@@ -73,7 +74,7 @@
         <label>Difficulty</label>
       </div>
     <!-- Servings -->
-      <div class="input-field col s3">
+      <div class="input-field col">
        <label><h6>Number of Servings</h6></label>
         <input
           id="servings"
@@ -88,7 +89,7 @@
     </div>
     <!-- Time -->
     <div class="row">
-      <div class="input-field col s3">
+      <div class="input-field col">
         <label><h6>Cooking Time (Mins)</h6></label>
         <input
           id="time"
@@ -101,7 +102,7 @@
         />
       </div>
     <!-- Temperature -->
-      <div class="input-field col s3">
+      <div class="input-field col">
         <label><h6>Temperature (Degrees)</h6></label>
         <input
           id="temperature"
@@ -143,7 +144,7 @@
     <div class="row">
       <div class="input-field col s6">
         <select name="allergens" multiple>
-          <option value="" disabled selected>Check allergens</option>
+          <option value="" disabled selected>Select</option>
           {% for allergen in allergens %}
           <option value="{{allergen.allergen}}">{{allergen.allergen}}</option>
           {% endfor %}
@@ -155,6 +156,7 @@
       Add Recipe
     </button>
   </form>
+  </div>
   <div class="row back-button">
 	<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
 </div>
