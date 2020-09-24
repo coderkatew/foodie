@@ -1,128 +1,134 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-    <div class="back-button">
-    <a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn">Back to Recipes</a>
-    </div>
-	<!-- Recipe Name -->
-	<div>
-		<h1>{{recipe.recipe_name}}</h1>
+	<div class="back-button">
+		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn">Back to Recipes</a>
 	</div>
+
 	<!-- Recipe Image -->
-    <div class="row">
-		{% if recipe.recipe_image %}
-		<img
+	<div class="row">
+		<div class="col 3">
+			{% if recipe.recipe_image %}
+			<img
       class="recipe-image-view"
       src="{{ url_for('upload', filename=recipe.recipe_image) }}"
       alt="photo of dish"
     />
     {% else %}
-		<img
+			<img
       height="200"
       width="200"
       src="{{ url_for('static', filename='images/placeholder.png')}}"
       alt="photo of dish"
     />
     {% endif %}
-  </div>
-		<!-- Meal type -->
-		<div>
-			<p>Meal Type: {{recipe.category}}</p>
-		</div>
-        <!-- Cuisine -->
-		<div>
-        {% if recipe.recipe_image %}
-			<p>Cuisine: {{recipe.cuisine}}</p>
-              {% else %}
-             <p>Cuisine: - </p> 
-             {% endif %}
-		</div>
-        <div class="row">
-		<!-- Difficulty Level -->
-		<div>
-			<p>Difficulty: {{recipe.difficulty}}</p>
-		</div>
-		<!-- Servings -->
-		<div>
-			<p>Serves: {{recipe.servings}}</p>
-		</div>
-        </div>
-        <div class="row">
-		<!-- Time -->
-		<div>
-			<p>Time Required: {{recipe.time}} Minutes</p>
-		</div>
-        <!-- Temperature -->
-		<div>
-			<p>Temperature: {{recipe.temperature}} &#176;C</p>
-		</div>
-        </div>
-        <div class="row">
-		<!-- Ingredients -->
-		<div>
-			<h4>Ingredients</h4>
-			<ul>
-				{% for ingredient in recipe.ingredients %}
-				<li>
-					{{ingredient}}
-				</li>
-				{% endfor %}
-			</ul>
-		</div>
-        </div>
-        <div class="row">
-		<!-- Method -->
-		<div>
-			<h4>Method</h4>
-			<ol>
-				{% for step in recipe.method %}
-				<li>
-					{{step}}
-				</li>
-				{% endfor %}
-			</ol>
-		</div>
-        </div>
-        <div class="row">
-		<!-- Allergens -->
-        <div class="allergens">
-			<h5>Allergens</h5>
-			<ul>
-				{% if recipe.allergens %}
-                {% for allergen in recipe.allergens %}
-				<li>
-					{{allergen}}
-				</li>
-                 {% else %}
-                 <li>
-					No known allergens.
-				</li>
-                {% endfor %}
-				{% endif %}
-			</ul>
-		</div>
-        </div>
-        <div class="row">
-        <div>
-			<p class="contributor">Added by {{recipe.contributor}}</p>
-		</div>
-        </div>
-        <div class="row">
-        <div>
-		<a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
- <!-- Materialize Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#delete-modal">Delete</a>
-  <!-- Materialize Modal Structure -->
-  <div id="delete-modal" class="modal">
-    <div class="modal-content">
-      <h4>Delete Recipe</h4>
-      <p>Do you really want to delete this recipe?</p>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-      <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
-    </div>
-  </div>
-		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn">View All Recipes</a>
-	</div>
-    </div>
-   	{% endblock %}
+			<!-- Recipe Name -->
+			<div class="col 9">
+				<h1>{{recipe.recipe_name}}</h1>
+			</div>
+			<!-- Meal type -->
+			<div class="row">
+				<div class="col 3">
+					<p>Meal Type: {{recipe.category}}</p>
+				</div>
+				<!-- Cuisine -->
+				<div class="col 3">
+					{% if recipe.recipe_image %}
+					<p>Cuisine: {{recipe.cuisine}}</p>
+					{% else %}
+					<p>Cuisine: - </p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Difficulty Level -->
+			<div>
+				<p>Difficulty: {{recipe.difficulty}}</p>
+			</div>
+			<!-- Servings -->
+			<div>
+				<p>Serves: {{recipe.servings}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Time -->
+			<div>
+				<p>Time Required: {{recipe.time}} Minutes</p>
+			</div>
+			<!-- Temperature -->
+			<div>
+				<p>Temperature: {{recipe.temperature}} &#176;C</p>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Ingredients -->
+			<div>
+				<h4>Ingredients</h4>
+				<ul>
+					{% for ingredient in recipe.ingredients %}
+					<li>
+						{{ingredient}}
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Method -->
+			<div>
+				<h4>Method</h4>
+				<ol>
+					{% for step in recipe.method %}
+					<li>
+						{{step}}
+					</li>
+					{% endfor %}
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Allergens -->
+			<div class="allergens">
+				<h5>Allergens</h5>
+				<ul>
+					{% if recipe.allergens %}
+					{% for allergen in recipe.allergens %}
+					<li>
+						{{allergen}}
+					</li>
+					{% else %}
+					<li>
+						No known allergens.
+					</li>
+					{% endfor %}
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div>
+				<p class="contributor">Added by {{recipe.contributor}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div>
+				<a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
+				<!-- Materialize Modal Trigger -->
+				<a class="waves-effect waves-light btn modal-trigger" href="#delete-modal">Delete</a>
+				<!-- Materialize Modal Structure -->
+				<div id="delete-modal" class="modal">
+					<div class="modal-content">
+						<h4>Delete Recipe</h4>
+						<p>Do you really want to delete this recipe?</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+						<a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+							class="modal-close waves-effect waves-green btn-flat">Delete</a>
+					</div>
+				</div>
+				<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn">View All Recipes</a>
+			</div>
+		</div>
+		{% endblock %}
