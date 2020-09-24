@@ -27,35 +27,35 @@
                 <!-- Meal type -->
 			<div class="row">
 				<div class="col 3">
-					<p>Meal Type: {{recipe.category}}</p>
+					<p><i class="fas fa-utensils all-recipes"></i> {{recipe.category}}</p>
 				</div>
 				<!-- Cuisine -->
 				<div class="col 3">
-					{% if recipe.recipe_image %}
-					<p>Cuisine: {{recipe.cuisine}}</p>
+					{% if recipe.cuisine %}
+					<p><i class="fas fa-globe-americas"></i> {{recipe.cuisine}}</p>
 					{% else %}
-					<p>Cuisine: - </p>
+					<p><i class="fas fa-globe-americas"></i> Cuisine: - </p>
 					{% endif %}
 				</div>
 			</div>
             <div class="row">
 			<!-- Difficulty Level -->
 			<div class="col 3">
-				<p>Difficulty: {{recipe.difficulty}}</p>
+				<p><i class="fas fa-signal"></i> {{recipe.difficulty}}</p>
 			</div>
 			<!-- Servings -->
 			<div class="col 3">
-				<p>Serves: {{recipe.servings}}</p>
+				<p><i class="fas fa-user-friends all"></i> Serves {{recipe.servings}}</p>
 			</div>
 		</div>
 		<div class="row">
 			<!-- Time -->
 			<div class="col 3">
-				<p>Time Required: {{recipe.time}} Minutes</p>
+				<p><i class="far fa-clock"></i> {{recipe.time}} Minutes</p>
 			</div>
 			<!-- Temperature -->
 			<div class="col 3">
-				<p>Temperature: {{recipe.temperature}} &#176;C</p>
+				<p><i class="fas fa-thermometer-half"></i> {{recipe.temperature}} &#176;C</p>
 			</div>
 		</div>
             </div>
