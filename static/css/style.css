@@ -116,7 +116,9 @@ img {
 .recipe-image {
     max-width:150px;
     max-height:150px;
+    margin-top: 5%;
 }
+
 
 .recipe-image-view {
     max-width:250px;
@@ -135,20 +137,22 @@ img {
 }
 
 .card-action {
-    padding-top: 40%;
+    text-align: right;
+    padding-right: 5%;
 }
 
 .card-time {
     text-align: center;
 }
 
-.recipe-details {
-    padding-top:5%;
+.recipe.details {
+    padding-top: 5%;
 }
 
 i.all-recipes {
     color:black;
 }
+
 /* ---- View Recipes ----*/
 
 .recipe-top {
@@ -244,6 +248,40 @@ nav .brand-logo {
     align-content: center;
     width: 100%;
 }
+
+.searchbar {
+    width: 100%;
+}
+
+.recipe-image {
+     width: 100%;
+     padding:0;  
+     margin:0;
+     text-align: center;
+}
+
+#recipe-card.row {
+    text-align: center;
+    margin:0;
+}
+
+.recipe-title {
+     width: 100%;
+     margin:0;
+}
+
+.recipe-details col {
+     width: 100%;
+}
+
+.card-action {
+    text-align:center;
+    width:100%;
+    padding:0;
+}
+
+
+
 
 footer {
     max-width: 100%;
