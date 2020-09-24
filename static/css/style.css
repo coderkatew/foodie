@@ -329,12 +329,10 @@ div.row.view-actions {
 
 /*-- Media Queries - Add Recipe -----*/
 
-#recipe_form.container {
+#recipe_form.container, #edit-form.container {
     margin:0;
     padding: 8%;
 }
-
-
 
 /*-- Media Queries - Footer -----*/
 
