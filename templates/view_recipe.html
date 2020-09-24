@@ -3,7 +3,6 @@
 	<div class="back-button">
 		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn">Back to Recipes</a>
 	</div>
-
 	<!-- Recipe Image -->
 	<div class="row">
 		<div class="col 3">
@@ -25,8 +24,7 @@
 			<!-- Recipe Name -->
 			<div class="col 9">
 				<h1>{{recipe.recipe_name}}</h1>
-			</div>
-			<!-- Meal type -->
+                <!-- Meal type -->
 			<div class="row">
 				<div class="col 3">
 					<p>Meal Type: {{recipe.category}}</p>
@@ -40,27 +38,29 @@
 					{% endif %}
 				</div>
 			</div>
-		</div>
-		<div class="row">
+            <div class="row">
 			<!-- Difficulty Level -->
-			<div>
+			<div class="col 3">
 				<p>Difficulty: {{recipe.difficulty}}</p>
 			</div>
 			<!-- Servings -->
-			<div>
+			<div class="col 3">
 				<p>Serves: {{recipe.servings}}</p>
 			</div>
 		</div>
 		<div class="row">
 			<!-- Time -->
-			<div>
+			<div class="col 3">
 				<p>Time Required: {{recipe.time}} Minutes</p>
 			</div>
 			<!-- Temperature -->
-			<div>
+			<div class="col 3">
 				<p>Temperature: {{recipe.temperature}} &#176;C</p>
 			</div>
 		</div>
+            </div>
+		</div>
+		
 		<div class="row">
 			<!-- Ingredients -->
 			<div>
