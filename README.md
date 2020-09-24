@@ -13,7 +13,7 @@ Foodie is a Flask project that uses MongoDB to build a recipe database so that u
 
 ## Project Outline
 
-1. UX
+1. [UX](UX)
 
 2. Structure and Skeleton
 
@@ -54,6 +54,17 @@ As a user, I want to:
 * access the site from a mobile device.
 * log out when I've finished browsing or adding recipes.
 <br><br>
+
+
+### Documentation
+The desktop and mobile wireframes for this project are located in the 'documentation' folder:
+* [Foodie Wireframe] (wireframe/foodie.pdf)
+The data schema example is also located in the 'documentation older:
+* [Foodie Data Schema] (schema/foodie.png)
+<br><br>
+
+
+
 
 ## Features Left to Implement
 **Social Sharing** - I'd like to add 'Quick share' feature for social apps such as WhatsApp and Pinterest for users to easily share recipes.
@@ -101,7 +112,7 @@ This project uses [MongoDB Atlas](https://www.mongodb.com/) for the database.
 This project uses [PyMongo](https://pypi.org/project/pymongo/) to communicate between Python and MongoDB.
 
 **GitHub and Heroku** -
-This project is stored on [GitHub]{https://github.com/} and has been deployed to [Heroku](https://www.heroku.com/). 
+This project is stored on [GitHub](https://github.com/) and has been deployed to [Heroku](https://www.heroku.com/). 
 
 <br>
 
