@@ -39,11 +39,11 @@ My main goal for this project was to create a simple site that is easy to use an
 
 ### User Stories
 As a user, I want to:
-* create a Foodie account
-* log in to Foodie
+* create a Foodie account.
+* log in to Foodie.
 * navigate easily through the site.
 * view recipes that other users have shared.
-* view recipes that include all of the details I need to make the dish (ingredients, method, time, temperature, servings)
+* view recipes that include all of the details I need to make the dish (ingredients, method, time, temperature, servings).
 * search for specific recipes.
 * search for recipes with specific ingredients or keywords.
 * add my own recipe.
@@ -52,10 +52,58 @@ As a user, I want to:
 * delete recipes that I have added.
 * access the site from a desktop or laptop.
 * access the site from a mobile device.
-* log out when I've finished browsing or adding recipes
+* log out when I've finished browsing or adding recipes.
 <br><br>
 
+## Features Left to Implement
+**Social Sharing** - I'd like to add 'Quick share' feature for social apps such as WhatsApp and Pinterest for users to easily share recipes.
 
+**Download Recipes** - I'd like to add a PDF or print option to the 'View Recipe' page so that users can save and print recipes.
+
+**Advanced Search** - I'd like to add functionality to allow users to refine and filter search results (e.g. by contributor, meal type, and so on). 
+
+**Contributor Pages**  - I'd like to add contributor/profile pages that users can customize to display their activity and recipes to other users, if they wish. Users would have the option to follow or connect with other Foodie members and tag them or comment on their recipes. This would be a valuable feature for the site owner as they could introduce business pages for food brands and influencers and potentially generate revenue in this way.
+
+**Foodie Forum** - I'd like to add a community forum where Foodie members can ask questions, discuss recipes and share useful baking tips in an informal way.
+
+**Video Tutorials** - I'd like to add a section with video tutorials to demonstrate different cooking and baking techniques. This could include videos submitted by users as well as some premium content from well known chefs and bakers.
+<br><br>
+
+## Technologies Used
+The following languages and frameworks were used to build this project:
+
+**Gitpod IDE** -
+[Gitpod](https://www.gitpod.io/) was used as an IDE to build this project.
+
+**Flask** -
+This project uses Flask to create and render pages.
+
+**HTML, CSS, JavaScript and Python** -
+This project uses HTML, CSS, JavaScript and Python programming languages.
+
+**Google Fonts** -
+This project uses [Google Fonts](https://fonts.google.com/) to style fonts.
+
+**Font Awesome** -
+The project uses [Font Awesome](https://fontawesome.com/) to present icons throughout the site.
+
+
+**Materialize** - 
+This project uses [Materialize](https://materializecss.com/) for navigation and other elements such as the search bar.
+
+**PIP** -
+This project uses PIP to install required tools.
+
+**MongoDB Atlas** -
+This project uses [MongoDB Atlas](https://www.mongodb.com/) for the database.
+
+**PyMongo** -
+This project uses [PyMongo](https://pypi.org/project/pymongo/) to communicate between Python and MongoDB.
+
+**GitHub and Heroku** -
+This project is stored on [GitHub]{https://github.com/} and has been deployed to [Heroku](https://www.heroku.com/). 
+
+<br>
 
 
 --------
