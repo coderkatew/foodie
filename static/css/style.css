@@ -51,6 +51,11 @@ i.material-icons {
     text-align:right;
 }
 
+/* ----- Recipe Images -----*/
+
+img {
+  border: 5px solid black;
+}
 
 /* ----- Login and Register -----*/
 
@@ -114,13 +119,13 @@ i.material-icons {
 }
 
 .recipe-image-view {
-    max-width:300px;
-    max-height:300px;
+    max-width:250px;
+    max-height:250px;
 }
 
 .back-button {
     text-align:right;
-    padding: 3%;
+    padding: 1%;
 }
 
 #recipe-card {
@@ -143,6 +148,16 @@ i.material-icons {
 
 i.all-recipes {
     color:black;
+}
+/* ---- View Recipes ----*/
+
+.recipe-top {
+    margin-left: 2%;
+}
+
+.title-view {
+    padding:0;
+    margin:0;
 }
 
 /* ---- Pagination ----*/

@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block content %}
-
+	
 <div id="recipe_form" class="container">
+<div class="back-button">
+		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Recipes</a>
+	</div>
 <h3>Add Recipe</h3>
   <form
     action="{{ url_for('insert_recipe') }}"
@@ -152,6 +155,9 @@
       Add Recipe
     </button>
   </form>
+  <div class="row back-button">
+	<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
+</div>
 </div>
 
 {% endblock %}
