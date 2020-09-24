@@ -19,11 +19,21 @@
 		</div>
 		<!--Recipe Image-->
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="file-field input-field col s7">
 				{% if recipe.recipe_image %}
+                <div class="col 3">
 				<img height="200" width="200" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish">
-				<input type="file" class="image" name="recipe_image"  id="recipe-image"
-         accept="image/png, image/jpeg">
+                </div>
+                 <div class="btn upload col 3">
+                 <span>Change Image</span>
+				<input type="file" class="image"
+          name="recipe_image"
+          id="recipe-image"
+          accept="image/png, image/jpeg">
+      </div>
+      <div class="file-path-wrapper col 3">
+        <input class="file-path validate" type="text" placeholder="File type">
+      </div>
                         {% else %}
 				<img
                 height="200"
@@ -38,7 +48,7 @@
 		</div>
 		<!-- Meal Type -->
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col s3">
 				<select id="category" name="category">
           <option value="" disabled selected>Select a meal type</option>
           {% for cat in categories %} {% if cat.category == recipe.category%}
@@ -49,10 +59,8 @@
         </select>
 				<label>Meal Type:</label>
 			</div>
-		</div>
 		<!-- Difficulty Level -->
-		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col s3">
 				<select name="difficulty">
           <option value="" disabled selected>Select a difficulty level</option>
            {% for level in levels %}
@@ -68,7 +76,7 @@
 		</div>
 		<!-- Cuisine -->
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col s3">
 				<select name="cuisine">
           <option value="" disabled selected>Select a cuisine</option>
           {% for cuisine in cuisines %}
@@ -81,10 +89,8 @@
         </select>
 				<label>Cuisine:</label>
 			</div>
-		</div>
 		<!-- Servings -->
-		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col s3">
 				<input
           id="servings"
           name="servings"
@@ -100,7 +106,7 @@
 		</div>
 		<!-- Time -->
 		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col s3">
 				<label>Cooking Time (Mins)</label>
 				<input
           id="time"
@@ -114,8 +120,7 @@
         />
       </div>
       <!-- Temperature -->
-		<div class="row">
-			<div class="input-field col s6">
+			<div class="input-field col s3">
 				<label>Temperature (Degrees)</label>
 				<input
           id="temperature"
@@ -130,7 +135,7 @@
 			</div>
 			<!-- Ingredients -->
 			<div class="row">
-				<div class="input-field col s12">
+				<div class="input-field col s10">
 					<h5>Ingredients:</h5>
 					<p>Add each ingredient on a new line</p>
 					<textarea
@@ -143,7 +148,7 @@
 			</div>
 			<!-- Method -->
 			<div class="row">
-				<div class="input-field col s12">
+				<div class="input-field col s10">
 					<h5>Cooking instructions:</h5>
 					<p>Add each step on a new line</p>
 					<textarea
@@ -157,7 +162,7 @@
 			<!-- Allergens -->
 			<div class="row">
 				<div class="input-field col s6">
-					<select name="allergens"  class="validate" multiple>
+					<select name="allergens"  class="validate" required="" multiple>
                     {% for allergen in allergens %}
                     {% if allergen.allergen in recipe.allergens%}
                     <option value="{{allergen.allergen}}" selected>{{allergen.allergen}}</option>
