@@ -74,6 +74,7 @@ img {
     width: 100%;
 }
 
+
 /* ----- Forms -----*/
 .input-field label {
      color: black;
@@ -230,6 +231,9 @@ i.pagination {
 
 @media screen and (max-width: 600px) {
 
+h1, h4 {
+    text-align: center;
+}
 
 nav {
     height: 60px;
@@ -245,12 +249,13 @@ nav .brand-logo {
   }
 
 #login.container, #register.container {
-    align-content: center;
     width: 100%;
+    padding: 2%;
 }
 
-.searchbar {
-    width: 100%;
+div.row.register-form {
+    margin:0;
+    width:100%;
 }
 
 .recipe-image {
@@ -260,18 +265,28 @@ nav .brand-logo {
      text-align: center;
 }
 
+.back-button {
+    display: none;
+}
+
+
+/*-- Media Queries - All Recipes -----*/
+
+.searchbar {
+    width: 100%;
+}
+
 #recipe-card.row {
-    text-align: center;
-    margin:0;
+    margin:2%;
+}
+
+.recipe-card-image {
+    padding:2% 0 2% 22%;
 }
 
 .recipe-title {
      width: 100%;
      margin:0;
-}
-
-.recipe-details col {
-     width: 100%;
 }
 
 .card-action {
@@ -280,13 +295,44 @@ nav .brand-logo {
     padding:0;
 }
 
+/*-- Media Queries - View Recipe -----*/
 
+.title-view {
+    margin-bottom:4%;
+}
 
+.view-recipe-image {
+     padding: 3% 0 5% 15%;
+}
+
+div.row.recipe-detail {
+    margin:0;
+    padding-left:15%;
+}
+
+.view-ingredients, .view-allergens {
+    padding:10%;
+}
+
+.view-method {
+    padding:4%;
+}
+
+.contributor {
+    text-align: center;
+}
+
+div.row.view-actions {
+    padding: 0 0 5% 15%;
+    margin:0;
+}
+
+/*-- Media Queries - Footer -----*/
 
 footer {
     max-width: 100%;
     max-height: 50px;    
-    padding:1%;
+    padding:2%;
 }
 
 .social-links {

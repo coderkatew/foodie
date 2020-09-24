@@ -2,11 +2,11 @@
 
 <div id="register" class="container">
     <div class="row">
-    <div class="col s6">
+    <div class="col s6 register-image">
     <img src="{{ url_for('static', filename='images/login.jpg') }}" alt="photo of red curry dish" />
     <p>A recipe sharing community for food enthusiasts</p>
     </div>
-        <div class="col s6">
+        <div class="col s6 register-form">
             <form method=POST action="{{ url_for('register') }}">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>

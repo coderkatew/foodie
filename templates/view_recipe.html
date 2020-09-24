@@ -6,6 +6,7 @@
 	<!-- Recipe Image -->
 	<div class="row">
 		<div class="col 3">
+        <div class="view-recipe-image">
 			{% if recipe.recipe_image %}
 			<img
       class="recipe-image-view"
@@ -21,11 +22,12 @@
     />
     {% endif %}
     </div>
+    </div>
 			<!-- Recipe Name -->
 			<div class="col 9 recipe-top">
 				<h1 class="title-view">{{recipe.recipe_name}}</h1>
                 <!-- Meal type -->
-			<div class="row">
+			<div class="row recipe-detail">
 				<div class="col 3">
 					<p><i class="fas fa-utensils all-recipes"></i> {{recipe.category}}</p>
 				</div>
@@ -38,7 +40,7 @@
 					{% endif %}
 				</div>
 			</div>
-            <div class="row">
+            <div class="row recipe-detail">
 			<!-- Difficulty Level -->
 			<div class="col 3">
 				<p><i class="fas fa-signal"></i> {{recipe.difficulty}}</p>
@@ -48,7 +50,7 @@
 				<p><i class="fas fa-user-friends all"></i> Serves {{recipe.servings}}</p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row recipe-detail">
 			<!-- Time -->
 			<div class="col 3">
 				<p><i class="far fa-clock"></i> {{recipe.time}} Minutes</p>
@@ -61,7 +63,7 @@
             </div>
 		</div>
 		
-		<div class="row">
+		<div class="row view-ingredients">
 			<!-- Ingredients -->
 			<div class="ingredients">
 				<h4>Ingredients</h4>
@@ -74,7 +76,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row view-method">
 			<!-- Method -->
 			<div>
 				<h4>Method</h4>
@@ -87,7 +89,7 @@
 				</ol>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row view-allergens">
 			<!-- Allergens -->
 			<div class="allergens">
 				<h5>Allergens</h5>
@@ -108,10 +110,10 @@
 		</div>
 		<div class="row">
 			<div>
-				<p class="contributor">Added by {{recipe.contributor}}</p>
+				<p class="contributor"><em>Added by {{recipe.contributor}}</em></p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row view-actions">
 			<div class="col 6">
 				<a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
 				<!-- Materialize Modal Trigger -->
