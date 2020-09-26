@@ -1,4 +1,4 @@
-// Initialize modal
+// Script for Materialize elements - modal, navbar and tooltips
 
 $(document).ready(function() {
      $('.modal').modal();

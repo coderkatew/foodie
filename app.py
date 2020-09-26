@@ -22,8 +22,6 @@ mongo = PyMongo(app)
 
 
 # Register and login pages from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
-
-
 @app.route('/')
 def index():
     if 'username' in session:
@@ -41,9 +39,9 @@ def login():
 
         if login_user:
             if bcrypt.hashpw(request.form['pass'].encode('utf-8'),
-            login_user['password']) == login_user['password']:
-                
-             return redirect(url_for('all_recipes'))
+                    login_user['password']) == login_user['password']:
+
+                return redirect(url_for('all_recipes'))
 
         flash('Invalid username/password combination')
         session.pop('username', None)
@@ -70,7 +68,7 @@ def register():
 
     return render_template('register.html')
 
-    
+
 @app.route('/all_recipes')
 def all_recipes():
     recipes = mongo.db.recipes
@@ -84,7 +82,7 @@ def all_recipes():
 
     return render_template("all_recipes.html", recipes=recipes,
                            current_page=current_page,
-                           pages=pages, total=total)  
+                           pages=pages, total=total)
 
 
 # add a new recipe
@@ -102,6 +100,7 @@ def add_recipe():
 def convert_to_array(string):
     array = string.split("\n")
     return array
+
 
 @app.route('/uploads/<filename>', methods=['GET'])
 def upload(filename):
@@ -156,24 +155,24 @@ def update_recipe(recipe_id):
     recipe_image = request.files['recipe_image']
 
     if 'recipe_image' in request.files:
-        mongo.save_file(recipe_image.filename, recipe_image)
+        mongo.save_file(recipe_image.filename, recipe_image),
 
-    recipes.update_one({"_id": ObjectId(recipe_id)},{"$set":
-        {
-        'recipe_name': request.form['recipe_name'],
-        'contributor': session['username'],
-        'category': request.form['category'],
-        'difficulty': request.form['difficulty'],
-        'cuisine': request.form['cuisine'],
-        'servings': request.form['servings'],
-        'time': request.form['time'],
-        'temperature': request.form['temperature'],
-        'ingredients': convert_to_array(request.form['ingredients']),
-        'method': convert_to_array(request.form['method']),
-        'allergens': convert_to_array(request.form['allergens']),
-    }})
-    if recipe_image.filename != "":   
-                recipes.update_one({"_id":ObjectId(recipe_id)},{ "$set":{'recipe_image':recipe_image.filename,}}) 
+        recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set":
+                {
+                'recipe_name': request.form['recipe_name'],
+                'contributor': session['username'],
+                'category': request.form['category'],
+                'difficulty': request.form['difficulty'],
+                'cuisine': request.form['cuisine'],
+                'servings': request.form['servings'],
+                'time': request.form['time'],
+                'temperature': request.form['temperature'],
+                'ingredients': convert_to_array(request.form['ingredients']),
+                'method': convert_to_array(request.form['method']),
+                'allergens': convert_to_array(request.form['allergens']),
+                }})
+    if recipe_image.filename != "":
+                    recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": {'recipe_image': recipe_image.filename}})
 
     return redirect(url_for('view_recipe', recipe_id=recipe_id))
 
@@ -198,47 +197,48 @@ def view_recipe(recipe_id):
                            levels=mongo.db.levels.find(),
                            allergens=mongo.db.allergens.find())
 
+
 # Credit to https://stackoverflow.com/questions/48371016/pymongo-how-to-use-full-text-search
 @app.route('/search_recipes', methods=['POST'])
-def search_recipes():  
+def search_recipes():
     keyword = request.form["keyword"]
-        
+
     # creates index in MongoDB
     mongo.db.recipes.create_index([("$**", 'text')])
 
-    #Search result sorted by upvotes descending and after by number of views descending    
-    recipes = mongo.db.recipes.find({"$text":{"$search": keyword}})
-            
+    # Search result sorted by upvotes descending and after by number of views descending
+    recipes = mongo.db.recipes.find({"$text": {"$search": keyword}})
+
     return render_template('all_recipes.html',
-                            username=session['username'], 
-                            recipes = recipes, 
-                            categories = mongo.db.categories.find(), 
-                            cuisines=mongo.db.cuisines.find(), 
-                            levels=mongo.db.levels.find(), 
-                            allergens=mongo.db.allergens.find(), 
-                            recipe_total=recipes.count()) 
+                            username=session['username'],
+                            recipes=recipes,
+                            categories=mongo.db.categories.find(),
+                            cuisines=mongo.db.cuisines.find(),
+                            levels=mongo.db.levels.find(),
+                            allergens=mongo.db.allergens.find(),
+                            recipe_total=recipes.count())
 
 
 @ app.route('/my_recipes/<username>', methods=['GET'])
 def my_recipes(username):
     current_user = mongo.db.users.find_one({'name': session['username']})['_id']
     profile_name = mongo.db.users.find_one({'name': session['username']})['name']
-    
+
     contributor_recipes = mongo.db.recipes.find({'contributor': profile_name})
-    
+
     total_recipes = contributor_recipes.count()
     return render_template('my_recipes.html',
                            contributor_recipes=contributor_recipes,
                            username=profile_name,
                            total_recipes=total_recipes)
 
+
 # Logout
 @app.route('/logout')
 def logout():
-    # removes the username from the session 
+    # removes the username from the session
     session.pop('username', None)
     return redirect(url_for('index'))
-
 
 
 # Error Handlers
@@ -246,6 +246,7 @@ def logout():
 def error_404(error):
     return render_template('errors/404.html', error=True,
                            title="Page Not Found"), 404
+
 
 @app.errorhandler(405)
 def error_405(error):
