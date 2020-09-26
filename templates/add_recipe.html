@@ -21,7 +21,7 @@
           name="recipe_name"
           type="text"
           class="validate"
-        />
+       required="">
       </div>
     </div>
     <!--Recipe Image-->
@@ -48,16 +48,16 @@
     <div class="row add-details">
       <div class="input-field col">
         <select id="category" name="category">
-          <option value="" disabled selected>Select</option>
-          {% for cat in categories %}
-          <option value="{{cat.category}}">{{cat.category}}</option>
+            <option value="" disabled selected>Select one</option>
+          {% for category in categories %}
+          <option value="{{category.category}}">{{category.category}}</option>
           {% endfor %}
         </select>
         <label>Meal Type:</label>
       </div>
     <!-- Cuisine -->
       <div class="input-field col">
-        <select name="cuisine">
+        <select name="cuisine" required="">
           <option value="" disabled selected>Select</option>
           {% for cuisine in cuisines %}
           <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
@@ -69,7 +69,7 @@
     <!-- Difficulty Level -->
     <div class="row">
       <div class="input-field col">
-        <select name="difficulty">
+        <select name="difficulty" required="required">
           <option value="" disabled selected>Select</option>
           {% for level in levels %}
           <option value="{{level.difficulty}}">{{level.difficulty}}</option>
@@ -144,7 +144,7 @@
         ></textarea>
       </div>
     </div>
-    <!-- Allergans -->
+    <!-- Allergens -->
     <div class="row">
       <div class="input-field col s6">
         <select name="allergens" multiple>

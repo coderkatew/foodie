@@ -114,20 +114,21 @@ def insert_recipe():
     if request.files:
         mongo.save_file(recipe_image.filename, recipe_image)
     recipes = mongo.db.recipes
+
     recipes.insert({
-        'recipe_name': request.form['recipe_name'],
-        'contributor': session['username'],
-        'recipe_image': recipe_image.filename,
-        'category': request.form['category'],
-        'difficulty': request.form['difficulty'],
-        'cuisine': request.form['cuisine'],
-        'servings': request.form['servings'],
-        'time': request.form['time'],
-        'temperature': request.form.get('temperature'),
-        'ingredients': convert_to_array(request.form['ingredients']),
-        'method': convert_to_array(request.form['method']),
-        'allergens': convert_to_array(request.form['allergens'])
-    })
+                    'recipe_name': request.form['recipe_name'],
+                    'contributor': session['username'],
+                    'recipe_image': recipe_image.filename,
+                    'category': request.form.get('category'),
+                    'difficulty': request.form.get('difficulty'),
+                    'cuisine': request.form.get('cuisine'),
+                    'servings': request.form['servings'],
+                    'time': request.form['time'],
+                    'temperature': request.form.get('temperature'),
+                    'ingredients': convert_to_array(request.form['ingredients']),
+                    'method': convert_to_array(request.form['method']),
+                    'allergens': convert_to_array(request.form['allergens'])
+                })
     return redirect(url_for('all_recipes'))
 
 
@@ -149,7 +150,7 @@ def edit_recipe(recipe_id):
 
 
 # Update recipe data in MongoDB
-@ app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
+@ app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
     recipe_image = request.files['recipe_image']
@@ -169,7 +170,7 @@ def update_recipe(recipe_id):
                 'temperature': request.form['temperature'],
                 'ingredients': convert_to_array(request.form['ingredients']),
                 'method': convert_to_array(request.form['method']),
-                'allergens': convert_to_array(request.form['allergens']),
+                'allergens': convert_to_array(request.form['allergens'])
                 }})
     if recipe_image.filename != "":
                     recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": {'recipe_image': recipe_image.filename}})

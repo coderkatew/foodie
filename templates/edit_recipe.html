@@ -33,8 +33,7 @@
           class="image"
           name="recipe_image"
           id="recipe-image"
-          accept="image/png, image/jpeg"
-          required>
+          accept="image/png, image/jpeg">
       </div>
       <div class="file-path-wrapper">
         <div class="col s5">
@@ -150,8 +149,7 @@
           id="ingredients"
           name="ingredients"
           class="materialize-textarea validate" 
-          required="">{{ existing_ingredients }}
-        </textarea>
+          required="">{{existing_ingredients}}</textarea>
 				</div>
 			</div>
 			<!-- Method -->
@@ -159,19 +157,18 @@
 				<div class="input-field col s10">
 					<h5>Method:</h5>
 					<p><em>Add each step on a new line</em></p>
-					<textarea
+<textarea
           id="method"
           name="method"
           class="materialize-textarea validate"
-          required="">{{ existing_method }}
-        </textarea>
+          required="">{{existing_method}}</textarea>
 				</div>
 			</div>
 			<!-- Allergens -->
 			<div class="row">
 				<div class="input-field col s6">
 					<select name="allergens"  class="validate" required="" multiple>
-                    {% for allergen in allergens %}
+                    {% for allergen in recipe.allergens %}
                     {% if allergen.allergen in recipe.allergens%}
                     <option value="{{allergen.allergen}}" selected>{{allergen.allergen}}</option>
                         {% else %}
