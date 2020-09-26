@@ -58,9 +58,10 @@ As a user, I want to:
 
 ### Documentation
 The desktop and mobile wireframes for this project are located in the 'documentation' folder:
-* [Foodie Wireframe] (wireframe/foodie.pdf)
-The data schema example is also located in the 'documentation older:
-* [Foodie Data Schema] (schema/foodie.png)
+* [Desktop Wireframe](documentation/wireframe.pdf)
+* [Mobile Wireframe](documentation/wireframe-mobile.pdf)
+The data schema example is also located in the 'documentation' folder:
+* [Foodie Data Schema](documentation/schema.png)
 <br><br>
 
 
