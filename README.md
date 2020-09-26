@@ -1,8 +1,5 @@
-![Cover Image](/static/images/foodie-cover.png)
-
-
-
 # Foodie
+![Cover Image](/static/images/readme/foodie-cover.png)
 Foodie is a recipe-sharing app for people with an interest in cooking and baking who'd like to discover new recipe ideas and share their own recipes with others. The purpose of this project is to create a simple, user-friendly app where users can create new recipe entries, browse and search for recipes, and update or delete recipes they've added.<br>
 Foodie is a Flask project that uses MongoDB to build a recipe database so that users can create, read, update, and delete (CRUD) their recipes.The long-term goal for this project is to add ecommerce and social features to build an online community of Foodie members and influencers.
 <br>
@@ -57,15 +54,40 @@ As a user, I want to:
 
 
 ### Documentation
-The desktop and mobile wireframes for this project are located in the 'documentation' folder:
+The desktop and mobile wireframes, and data schema for this project are located in the 'documentation' folder:
 * [Desktop Wireframe](documentation/wireframe.pdf)
-* [Mobile Wireframe](documentation/wireframe-mobile.pdf)
-The data schema example is also located in the 'documentation' folder:
+* [Mobile Wireframe](documentation/mobile-wireframe.pdf)
 * [Foodie Data Schema](documentation/schema.png)
 <br><br>
 
 
+## Features
 
+### Existing Features
+
+**Navbars and Navigation** - There are two version of the navbar (one for desktop and one for mobile) that were created using Materialize. The navigation panel allows the user to move quickly to specific pages on the site.<br><br>
+![Nav Image](/static/images/readme/navbar.png)<br><br>
+The mobile navbar displays the Foodie title logo and a hamburger icon that users can tap to open the sidenav.<br><br>
+![Nav Image](/static/images/readme/sidenav.jpg)<br><br>
+**Login and Register Pages** - The login page is the first page presented to the user. If the user hasn't already created an account, they can click 'Create one here' to open the register page. Once the user has logged in or registered, they are redirected to the 'All Recipes' page.<br><br>
+![Login Image](/static/images/readme/login.png)<br><br>
+**All Recipes Page** - The 'All Recipes' page displays all of the recipes that have been added to the site. Users can see a list of recipe cards with a summary of each recipe (image, title and some key details) and can click 'View' on a recipe card to view that particular recipe. <br><br>
+![All Recipes Image](/static/images/readme/all-recipes.png)<br><br>
+**Search Bar** - Users can type a keyword into the search bar at the top of the 'All Recipes' page to search the recipes for a specific word or recipe title.<br><br>
+![Search Bar Image](/static/images/readme/searchbar.png)<br><br>
+**Pagination** - If the number of recipes on the site exceeds 6, the list is paginated and the user can use the page navigation at the bottom of the page to move to another page of recipes.<br><br>
+![Pagination Image](/static/images/readme/pagination.png)<br><br>
+**View Recipe Page** - Shows the full details of the recipe and displays Edit and Delete options for the user who has contributed the recipe.<br><br>
+![View Recipe Image](/static/images/readme/view-recipe.png)<br><br>
+**Add and Edit Recipe Pages** - The 'Add Recipe' page is a form with several input fields to allow the user to add all of the recipe details. Each field has a label, button, or dropdown menu to indicate to the user what information is required. If the user submits the form without entering all of the required fields, they will see a prompt asking them to fill them in. The 'Edit Recipe' page has similar layout and functionality but the input fields are pre-populated with information already submitted by the user, which they can amend.<br><br>
+![Add or Edit Recipe Image](/static/images/readme/add-edit-recipe.png)<br><br>
+**My Recipes Page** - The 'My Recipes' page is a private page showing a list of the recipes added by the user. The recipe cards have the same format as the 'All Recipes' page but also include Edit and Delete options for the user.<br><br>
+![My Recipes Image](/static/images/readme/my-recipes.png)<br><br>
+**Footer** - The footer contains links to social pages, and a copyright notice for the site owner.<br><br>
+![Footer Image](/static/images/readme/footer.png)<br><br>
+**Log Out** - The user can click 'Log Out' in the navbar or sidebar to end the session and the login page will be displayed.<br><br>
+![Log Out Image](/static/images/readme/navbar.png)
+<br><br>
 
 ## Features Left to Implement
 **Social Sharing** - I'd like to add 'Quick share' feature for social apps such as WhatsApp and Pinterest for users to easily share recipes.
