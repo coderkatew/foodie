@@ -94,7 +94,8 @@ The mobile navbar displays the Foodie title logo and a hamburger icon that users
 **Footer** - The footer contains links to social pages, and a copyright notice for the site owner.<br><br>
 ![Footer Image](/static/images/readme/footer.png)<br><br>
 **Log Out** - The user can click 'Log Out' in the navbar or sidebar to end the session and the login page will be displayed.<br><br>
-![Log Out Image](/static/images/readme/navbar.png)
+![Log Out Image](/static/images/readme/navbar.png)<br><br>
+**Error Messaging and Warnings** - Error handlers, flash messages, and warning modals have been added to the project to inform the user if there is a site error or incorrect input.<br><br>
 <br><br>
 
 ## Features Left to Implement
@@ -146,7 +147,49 @@ This project is stored on [GitHub](https://github.com/) and has been deployed to
 
 <br>
 
-## Local Deployment
+## Testing
+### Manual Testing
+This project has been tested manually on desktop and mobile in Chrome and Firefox. I used Chrome Developer Tools to carry out some of the mobile testing.
+All images are under 5MB to ensure they load quickly.
+
+## Testing
+### Manual Testing
+This project has been tested manually on desktop and mobile in Chrome and Firefox. I used Chrome Developer Tools to carry out some of the mobile testing.
+All images are under 5MB to ensure they load quickly.
+
+### Testing User Stories
+* **As a user, I want to create a Foodie account.**<br>
+By navigating to http://foodie-project.herokuapp.com/ I can click 'Create one here' to open the register page and enter a username and password to create an account.  <br>
+* **As a user, I want to log in to Foodie.**<br>
+By navigating to http://foodie-project.herokuapp.com/ I can enter my account details to log in. Once I've logged in successfully, the 'All Recipes' page is displayed. <br>
+I entered an incorrect password to test the login process and an incorrect username/password combination message is displayed. <br> <br>
+**Error Handlers**:
+At this point, I also tested the 404, 405 and 500 error handlers by adding the links to the html files manually to the URL. <br>
+
+* **As a user, I want to navigate easily through the site.**
+For this story I tested the links in the Materialize navbar and sidebars as well as the 'Back to Recipes' button on some of the pages. All worked correctly.
+* **As a user, I want to view recipes that other users have shared, and view all details required to make a dish.**
+"All recipe card 'View' buttons are clickable on the 'All Recipes' page, search results, and 'My Recipes' section for each recipe tested.<br>
+All recipe details (that would have been submitted on the 'Add/Edit Recipe' pages are visible on the 'View Recipe' page for each of the recipes tested.
+* **As a user, I want to search for specific recipes or recipes with specific ingredients or keywords.**
+Results for recipe titles and specific ingredients or keywords display in a list when a term is entered into the search bar.
+* **As a user, I want to add my own recipe.**
+By navigating to the 'Add Recipe' page, I can add the details for a recipe along with a recipe image. If I don't fill a required field and try to submit the recipe, I see a prompt to fill out the field.
+* **As a user, I want to view the recipes that I have added.**
+I can view recipes I've added on the 'My Recipes' page, if I haven't added any recipes, there are links to browse recipes or add a recipe, and both are working correctly. 
+* **As a user, I want to edit recipes that I have added.**
+When I click edit on a recipe card for a recipe I've added, I can see the 'Edit Recipe' page with the recipe details in editable fields. If I change the content of a field or upload a new image file, the recipe is updated when I click 'Update Recipe'.
+* **As a user, I want to delete recipes that I have added.**
+I can click 'Delete' on a recipe card or the 'Edit Recipe' page for a recipe I've added to Foodie to remove the recipe from the app. I also checked the database to make sure the information was deleted. Initially I had not added any warning for the user and the recipes were deleted immediately so I added a modal prompting the user to confirm the action before anything is deleted for a better user experience.
+* **As a user, I want to access the site from a desktop or laptop, and from a mobile device.**
+The site is accessible from desktop, laptop and mobile device, and functions well on each device. I added some additional media queries to improve the display for smaller screen sizes.
+* **As a user, I want to log out when I've finished browsing or adding recipes.**
+Clicking 'Log Out' ends the user session and displays the login page. Note: I don't log out but closed the browser, the session will continue when I visit the site again. 
+
+
+## Deployment
+
+### Local Deployment
 To run this project locally on your computer, you'll need:
 * [GitPod](https://www.gitpod.io/), or another online IDE
 * A [MongoDB Atlas](https://www.mongodb.com/) account or run MongoDB locally on your device
