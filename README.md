@@ -12,9 +12,9 @@ Foodie is a Flask project that uses MongoDB to build a recipe database so that u
 
 1. [UX](UX)
 
-2. Structure and Skeleton
+2. [Documentation](Documentation)
 
-3. Surface
+3. [Features](Features)
 
 4. Testing
 
@@ -53,11 +53,17 @@ As a user, I want to:
 <br><br>
 
 
-### Documentation
-The desktop and mobile wireframes, and data schema for this project are located in the 'documentation' folder:
+## Documentation
+
+### Database Schema
+Before starting to build the Foodie app, I planned the overall structure of the recipe database to ensure that all of the data pieces were included.
+* [Data Schema Sample - Recipe](documentation/schema.png)
+<br><br>
+
+### Wireframes
+The desktop and mobile wireframes for this project are located in the 'documentation' folder:
 * [Desktop Wireframe](documentation/wireframe.pdf)
 * [Mobile Wireframe](documentation/mobile-wireframe.pdf)
-* [Foodie Data Schema](documentation/schema.png)
 <br><br>
 
 
@@ -90,7 +96,7 @@ The mobile navbar displays the Foodie title logo and a hamburger icon that users
 <br><br>
 
 ## Features Left to Implement
-**Social Sharing** - I'd like to add 'Quick share' feature for social apps such as WhatsApp and Pinterest for users to easily share recipes.
+**Social Sharing** - I'd like to add 'Quick Share' feature for social apps such as WhatsApp and Pinterest for users to easily share recipes.
 
 **Download Recipes** - I'd like to add a PDF or print option to the 'View Recipe' page so that users can save and print recipes.
 
