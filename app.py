@@ -127,7 +127,7 @@ def insert_recipe():
                     'temperature': request.form.get('temperature'),
                     'ingredients': convert_to_array(request.form['ingredients']),
                     'method': convert_to_array(request.form['method']),
-                    'allergens': convert_to_array(request.form['allergens'])
+                    'allergens': request.form.getlist('allergens')
                 })
     return redirect(url_for('all_recipes'))
 
@@ -153,6 +153,7 @@ def edit_recipe(recipe_id):
 @ app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
+    
     recipe_image = request.files['recipe_image']
 
     if 'recipe_image' in request.files:

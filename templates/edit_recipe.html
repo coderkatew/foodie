@@ -167,8 +167,8 @@
 			<!-- Allergens -->
 			<div class="row">
 				<div class="input-field col s6">
-					<select name="allergens"  class="validate" required="" multiple>
-                    {% for allergen in recipe.allergens %}
+					<select id="allergens" name="allergens"  class="validate" multiple>
+                    {% for allergen in allergens %}
                     {% if allergen.allergen in recipe.allergens%}
                     <option value="{{allergen.allergen}}" selected>{{allergen.allergen}}</option>
                         {% else %}

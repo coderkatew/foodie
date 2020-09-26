@@ -147,7 +147,7 @@
     <!-- Allergens -->
     <div class="row">
       <div class="input-field col s6">
-        <select name="allergens" multiple>
+        <select name="allergens" class="validate" multiple>
           <option value="" disabled selected>Select</option>
           {% for allergen in allergens %}
           <option value="{{allergen.allergen}}">{{allergen.allergen}}</option>
