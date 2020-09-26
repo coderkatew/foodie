@@ -16,11 +16,13 @@ Foodie is a Flask project that uses MongoDB to build a recipe database so that u
 
 3. [Features](Features)
 
-4. Testing
+4. [Technologies Used](Technologies)
 
-5. Deployment
+5. [Testing]()
 
-6. Project Credits
+6. [Deployment](Deployment)
+
+7. [Project Credits]()
 
 <br><br>
 
@@ -127,7 +129,6 @@ This project uses [Google Fonts](https://fonts.google.com/) to style fonts.
 **Font Awesome** -
 The project uses [Font Awesome](https://fontawesome.com/) to present icons throughout the site.
 
-
 **Materialize** - 
 This project uses [Materialize](https://materializecss.com/) for navigation and other elements such as the search bar.
 
@@ -145,7 +146,42 @@ This project is stored on [GitHub](https://github.com/) and has been deployed to
 
 <br>
 
+## Local Deployment
+To run this project locally on your computer, you'll need:
+* [GitPod](https://www.gitpod.io/), or another online IDE
+* A [MongoDB Atlas](https://www.mongodb.com/) account or run MongoDB locally on your device
+And you'll need to install:
+* [Python](https://www.python.org/)
+* [PIP](https://pip.pypa.io/en/stable/installing/)
+* [Git](https://git-scm.com/)
+<br><br>
+
+### Instructions
+1. Clone the repository using the command `git clone https://github.com/coderkatew/foodie` or, save a copy of the GitHub repository located at https://github.com/coderkatew/foodie by clicking the green 'Code' button in the repository menu and selecting 'Download ZIP' to extract the zip file to your chosen folder. 
+2. In the terminal, change the directory (cd) to the correct location of the file.
+3. Set up the environment variables:
+ * Create an env.py file in the root directory.
+ * At the beginning of the file, type `import os` to set the environment variables in the operating system.
+ * Set the connection to the MongoDB database and set up a secret key by adding the following (with your own unique values):
+     <br>`os.environ["SECRET_KEY"] = "YourSecretKey"`
+     <br>`os.environ["MONGO_URI"] = "MongoURI"`
+4. Install the project requirements using this command in the terminal:
+`pip3 install -r requirements.txt`
+5. Create a new database in MongoDB and name it 'foodie'. 
+6. Run the application with the command `python3 app.py`.
+<br><br>
+
+## Deploying to Heroku
+To deploy the project to Heroku, you can follow these steps:
+1. Create a requirements.txt file (this is also required for local deployment, step 4 above).
+2. Create a Procfile using the command `echo web: python app.py > Procfile`.
+3. Make sure the env.py has been added to the .gitignore file.
+4. Create an app in Heroku named 'foodie-project'.
+5. Go to 'Reveal Config Vars' in settings in Heroku and add the environmental variables for IP, PORT, MONGODB_URI and SECRET_KEY (they should match the env.py file in order to connect successfully).
+6. Log in to Heroku through the terminal with the comman `heroku login -i`.
+7. Once you are logged in, use the command `git push heroku master` to push the project to Heroku.
+8. Click 'Open App' at the top of the Heroku dashboard and the project will open in a new tab.
 
 --------
 
-End
+[Back to top](Foodie)
