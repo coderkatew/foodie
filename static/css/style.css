@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
+/*-------- Global ---------*/
+
 body {
     background-color: #FBF4E1;
     font-family: 'Indie Flower', cursive;
@@ -8,21 +10,25 @@ body {
     flex-direction: column;
 }
 
-
-  main {
+main {
     flex: 1 0 auto;
-  }
-/* -------- Nav Bar ----------*/
+}
+
+img {
+  border: 5px solid black;
+}
+ 
+/* -------- Navigation ----------*/
 
 nav {
-  background-color:black;
+    background-color: black;
 }
  
 nav .brand-logo {
-  color: white;
-  font-family: 'Indie Flower', cursive;
-  font: 50%;
-  margin-left: 3%;
+    color: white;
+    font-family: 'Indie Flower', cursive;
+    font: 50%;
+    margin-left: 3%;
 }
 
 nav ul a {
@@ -35,29 +41,43 @@ nav ul .active {
 }
 
 i.material-icons {
-    color:white;
+    color: white;
 }
 
 #mobile-demo.side-nav {
     background-color: #FBF4E1;
-    color:black;
+    color: black;
 }
 
-/* ----- Search Bar-----*/
+/* ----- Buttons -----*/
 
-.searchbar {
-    width:50%;
-    margin-bottom:5%;
-    text-align:right;
+.btn {
+    background-color: #D6204E;
 }
 
-/* ----- Recipe Images -----*/
-
-img {
-  border: 5px solid black;
+.btn:hover { 
+    background-color: rgb(253, 18, 77);
+    color: white;
 }
 
-/* ----- Login and Register -----*/
+.waves-effect.btn {
+    background-color: #D6204E;
+}
+
+.waves-effect.btn:hover { 
+    background-color: rgb(253, 18, 77);
+    color: white;
+}
+
+/* ----- Forms -----*/
+
+.input-field label {
+     color: black;
+     font-size: .83em;
+     font-weight: bolder;
+}
+
+/* ----- Login and Register Pages -----*/
 
 .form-group label {
     color: black;
@@ -74,41 +94,18 @@ img {
     width: 100%;
 }
 
+/* ----- Search Bar-----*/
 
-/* ----- Forms -----*/
-.input-field label {
-     color: black;
-     font-size: .83em;
-     font-weight: bolder;
-   }
-
-.btn {
-    background-color: #D6204E;
-}
-
-
-
-
-/* ----- Buttons -----*/
-
-.waves-effect.btn {
-    background-color: #D6204E;
-}
-
-.waves-effect.btn:hover { 
-    background-color: rgb(253, 18, 77);
-    color: white;
-}
-
-.btn:hover { 
-    background-color: rgb(253, 18, 77);
-    color: white;
+.searchbar {
+    width: 50%;
+    margin-bottom: 5%;
+    text-align: right;
 }
 
 /* ----- Recipe Cards----*/
 
 .row-all-recipes {
-    padding-top:5%;
+    padding-top: 5%;
 }
 
 .recipe-title {
@@ -116,19 +113,18 @@ img {
 }
 
 .recipe-image {
-    max-width:150px;
-    max-height:150px;
+    max-width: 150px;
+    max-height: 150px;
     margin-top: 5%;
 }
 
-
 .recipe-image-view {
-    max-width:250px;
-    max-height:250px;
+    max-width: 250px;
+    max-height: 250px;
 }
 
 .back-button {
-    text-align:right;
+    text-align: right;
     padding: 1%;
 }
 
@@ -152,7 +148,7 @@ img {
 }
 
 i.all-recipes {
-    color:black;
+    color: black;
 }
 
 /* ---- View Recipes ----*/
@@ -162,25 +158,23 @@ i.all-recipes {
 }
 
 .title-view {
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 }
 
-
 .my-recipe-text {
-    margin-bottom:5%;
-    text-align:center;
+    margin-bottom: 5%;
+    text-align: center;
 }
 
 .no-recipe-text {
-    margin-bottom:5%;
+    margin-bottom: 5%;
 }
 
 /* ---- Pagination ----*/
 
 .material-icons {
     color: black;
-
 } 
 
 .current-page {
@@ -188,21 +182,30 @@ i.all-recipes {
     border-radius: 4px;
 } 
 
+.pagination {
+    width: 100%;
+    text-align: center;
+}
+
+i.pagination {
+    color: black;
+}
+
 /* ---- Footer ----*/
 
 footer {
-    background-color:black;
-    color:white;
-    flex-shrink:0; /* --- https://css-tricks.com/couple-takes-sticky-footer ----*/
+    background-color: black;
+    color: white;
+    flex-shrink: 0; /* Code from https://css-tricks.com/couple-takes-sticky-footer */
     margin: 0;
-    margin-top:1%;
+    margin-top: 1%;
     left: 0;
     bottom: 0;
     width: 100%;
 }
 
 .footer-content {
-    margin:0;
+    margin: 0;
 }
 
 .content {
@@ -212,16 +215,16 @@ footer {
 .footer-right {
     text-align: right;
     font-size: 120%;
-    padding-right:5%;
+    padding-right: 5%;
 }
 
 .social-links {
-    padding-left:7%;
+    padding-left: 7%;
 }
 
 .social-links li {
     display: inline;
-    padding:2%;
+    padding: 2%;
 }
 
 .social-links i {
@@ -230,21 +233,15 @@ footer {
   color: white;
 }
 
-.pagination {
-    width:100%;
-    text-align: center;
-}
-
-i.pagination {
-    color: black;
-}
 /*--------------- Media Queries --------------*/
 
 @media screen and (max-width: 1370px) {
 
+/* This improves the display of the login and register page on smaller laptop screens */
 .login-image, .register-image {
     display: none;
-  }
+}
+}
 
 @media screen and (max-width: 950px) {
 
@@ -255,39 +252,38 @@ h1, h4 {
 nav {
     height: 60px;
     line-height: 60px;
-  }
+}
 
 nav .brand-logo {
   margin-left: 0;
 }
 
+/* Removes the image on mobile for less cluttered view */
 .login-image, .register-image {
     display: none;
-  }
+}
 
 #login.container, #register.container {
     width: 100%;
     padding-left: 15%;
-    margin:0;
+    margin: 0;
 }
 
 div.row {
-    margin:0;
-    width:100%;
+    margin: 0;
+    width: 100%;
 }
-
 
 .recipe-image {
      width: 100%;
-     padding:0;  
-     margin:0;
+     padding: 0;  
+     margin: 0;
      text-align: center;
 }
 
 .back-button {
     display: none;
 }
-
 
 /*-- Media Queries - All Recipes -----*/
 
@@ -296,28 +292,28 @@ div.row {
 }
 
 #recipe-card.row {
-    margin:2%;
+    margin: 2%;
 }
 
 #recipe-card-image {
-    padding:2% 0 2% 22%;
+    padding: 2% 0 2% 22%;
 }
 
 .recipe-title {
      width: 100%;
-     margin:0;
+     margin: 0;
 }
 
 .card-action {
-    text-align:center;
-    width:100%;
-    padding:0;
+    text-align: center;
+    width: 100%;
+    padding: 0;
 }
 
 /*-- Media Queries - View Recipe -----*/
 
 .title-view {
-    margin-bottom:4%;
+    margin-bottom: 4%;
 }
 
 .view-recipe-image {
@@ -325,16 +321,16 @@ div.row {
 }
 
 div.row.recipe-detail {
-    margin:0;
-    padding-left:15%;
+    margin: 0;
+    padding-left: 15%;
 }
 
 .view-ingredients, .view-allergens {
-    padding:10%;
+    padding: 10%;
 }
 
 .view-method {
-    padding:4%;
+    padding: 4%;
 }
 
 .contributor {
@@ -343,13 +339,13 @@ div.row.recipe-detail {
 
 div.row.view-actions {
     padding: 0 0 5% 15%;
-    margin:0;
+    margin: 0;
 }
 
-/*-- Media Queries - Add Recipe -----*/
+/*-- Media Queries - Add/Edit Recipe -----*/
 
 #recipe_form.container, #edit-form.container {
-    margin:0;
+    margin: 0;
     padding: 8%;
 }
 
@@ -358,14 +354,14 @@ div.row.view-actions {
 footer {
     max-width: 100%;
     max-height: 50px;    
-    padding:2%;
+    padding: 2%;
 }
 
 .social-links {
   margin: 0;
-  
 }
 
 .footer-right {
-    margin:0;
+    margin: 0;
+}
 }
