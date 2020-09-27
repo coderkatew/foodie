@@ -54,6 +54,14 @@ As a user, I want to:
 * log out when I've finished browsing or adding recipes.
 <br><br>
 
+## Design
+There several pieces of information associated with each recipe or list of recipes so I chose a colour scheme with a small number of colours and a minimal design overall for a simple interface focused on the recipe images and content.<br>
+The buttons and hover states for menu items are all red colors to indicate to the user that they are interactive.<br>
+I chose more neutral black, white and cream colours for the footer, navbars and body elements across the site to bring focus to the colours in the recipe images, and to contrast with the red CTAs.<br>
+I used the Google Font [Indie Flower](https://fonts.google.com/specimen/Indie+Flower?selection.family=Indie+Flower#standard-styles) throughout the site to add a playful, informal style while keeping the text legible.<br>
+I used Materialize to add elements such as the navbar, footer, pagination, and search bar and kept some default styles as they fitted well with the overall theme.<br>
+The favicon ('F') is taken from the Foodie title logo so that people will develop a familiarity with it and to promote a consistent brand experience that could be built on later when social, community and ecommerce features are added to the app.<br><br>
+
 
 ## Documentation
 
