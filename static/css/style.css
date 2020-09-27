@@ -88,6 +88,7 @@ img {
 
 
 
+
 /* ----- Buttons -----*/
 
 .waves-effect.btn {
@@ -239,7 +240,13 @@ i.pagination {
 }
 /*--------------- Media Queries --------------*/
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1370px) {
+
+.login-image, .register-image {
+    display: none;
+  }
+
+@media screen and (max-width: 950px) {
 
 h1, h4 {
     text-align: center;
@@ -260,13 +267,15 @@ nav .brand-logo {
 
 #login.container, #register.container {
     width: 100%;
-    padding: 2%;
+    padding-left: 15%;
+    margin:0;
 }
 
-div.row.register-form {
+div.row {
     margin:0;
     width:100%;
 }
+
 
 .recipe-image {
      width: 100%;

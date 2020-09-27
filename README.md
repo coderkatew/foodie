@@ -227,4 +227,4 @@ To deploy the project to Heroku, you can follow these steps:
 
 --------
 
-[Back to top](Foodie)
+[Back to top](#Foodie)
