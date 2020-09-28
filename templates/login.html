@@ -9,16 +9,17 @@
         <div class="col s6 login">
             <form method=POST action="{{ url_for('login')}}">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
+                    <label>Username</label>
                     <input type="text" class="form-control" name="username" placeholder="Username">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label>Password</label>
                     <input type="password" class="form-control" name="pass" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Log In</button>
             </form>
             <br>
+            <!-- Link to the register page if the user hasn't logged in before -->
             <div>
                 Don't have an account? <a href="{{ url_for('register')}}">Create one here</a>.
             </div>
