@@ -3,33 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css')}}"
-      type="text/css"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css')}}" type="text/css"/>
     <meta name="author" content="Kate Walsh" />
-    <link
-      rel="icon"
-      href="{{ url_for('static', filename='images/favicon.png')}}"
-      sizes="16x16"
-      type="image/png"
-    />
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" sizes="16x16" type="image/png"/>
     <title>Foodie</title>
-    <!---- https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/ -->
+    <!---- Display of error/warning messages -->
     {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <ul class=flashes>
@@ -40,7 +21,6 @@
             {% endif %}
         {% endwith %}
   </head>
-
   <body>
     <header>
       <div class="navbar-fixed">
@@ -60,25 +40,25 @@
 		<div class="row footer-content">
 			<div class="col s6">
 				<ul class="social-links">
-			<li>
-				<a href="https://www.instagram.com" target="_blank">
-					<i class="fab fa-instagram" aria-hidden="true"></i></a>
-			</li>
-            <li>
-				<a href="https://www.pinterest.com" target="_blank">
-					<i class="fab fa-pinterest" aria-hidden="true"></i></a>
-			</li>
-			<li>
-				<a href="https://www.facebook.com" target="_blank">
-					<i class="fab fa-facebook-square" aria-hidden="true"></i></a>
-			</li>
-		</ul>
-			</div>
-			<div class="col s6">
+			        <li>
+				        <a href="https://www.instagram.com" target="_blank">
+					    <i class="fab fa-instagram" aria-hidden="true"></i></a>
+			        </li>
+                    <li>
+				        <a href="https://www.pinterest.com" target="_blank">
+					    <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+			        </li>
+			        <li>
+                        <a href="https://www.facebook.com" target="_blank">
+                        <i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s6">
 				<p class="footer-right">© 2020 Foodie</p>
 			</div>
 		</div>
 	</footer>
-     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/main.min.js') }}"></script>
   </body>
 </html>
