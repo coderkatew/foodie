@@ -188,6 +188,11 @@ i.all-recipes {
     margin-bottom: 5%;
 }
 
+.row.back-button.center {
+    text-align: center;
+}
+
+
 /* ---- Pagination ----*/
 
 .material-icons {
