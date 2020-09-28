@@ -20,9 +20,9 @@ Foodie is a Flask project that uses MongoDB to build a recipe database so that u
 
 5. [Testing](#Testing)
 
-6. [Deployment](Deployment)
+6. [Deployment](#Deployment)
 
-7. [Credits and Acknowledgements]()
+7. [Credits and Acknowledgements](#Credits)
 
 <br><br>
 
@@ -161,7 +161,7 @@ This project is stored on [GitHub](https://github.com/) and has been deployed to
 HTML files have been tested using [W3C Markup Validator](https://validator.w3.org/). See results [here](/testing).
 The CSS file has been tested using [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/). See results [here](/testing).
 The Javascript file has been tested using [JSHint](https://jshint.com/). See results [here](/testing).
-The Python file has been tested using [PEP8](http://pep8online.com/). See results [here](/testing).
+The Python file has been tested using [PEP8](http://pep8online.com/). There are a number of "line too long" warnings in the test results which I haven't been able to resolve without breaking the code but it is mentioned as a known issue online. See results [here](/testing).
 
 ### Manual Testing
 This project has been tested manually on desktop and mobile in Chrome and Firefox. I used Chrome Developer Tools to carry out some of the mobile testing.
@@ -195,6 +195,39 @@ I can click 'Delete' on a recipe card or the 'Edit Recipe' page for a recipe I'v
 The site is accessible from desktop, laptop and mobile device, and functions well on each device. I added some additional media queries to improve the display for smaller screen sizes.
 * **As a user, I want to log out when I've finished browsing or adding recipes.**
 Clicking 'Log Out' ends the user session and displays the login page. Note: I don't log out but closed the browser, the session will continue when I visit the site again. 
+
+
+### Bugs
+I encountered the following bugs during development of this project:
+<br>
+
+**Issue 1**
+**Problem:** Materialize sidenav opened on mobile but it remained static and the options weren't clickable.
+<br>
+
+**Solution:**The navbar was set as 'fixed' and removing this class resolved the issue.
+<br>
+
+**Issue 2**
+**Problem:**Selected options from the Allergens checkbox menu displayed in a string for the Edit and View pages.
+<br>
+
+**Solution:**I used the .getlist method to save and display them in a list.
+<br>
+
+**Issue 3**
+**Problem:**When a user views a recipe from the My Recipes page, the Back to Recipes button takes the user back to the first page of the All Recipes page. 
+<br>
+
+**Proposed Solution:**I'd like to add context URL variables for the next release of the project to take the user back to the My Recipes page at that point. They can always access the My Recipes page using the navbar but I think it would improve the user experience.
+<br>
+
+**Issue 4**
+**Problem:**The search bar was missing a 'Clear search' option so the user had to use the main navigation to return to the All Recipes page.
+<br>
+
+**Solution:**I've added a 'Reset' button which links back to the All Recipes page - I'd like to replace this with an icon placed in the search bar for the next release.
+<br><br> 
 
 
 ## Deployment
