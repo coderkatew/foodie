@@ -17,6 +17,11 @@ main {
 img {
   border: 5px solid black;
 }
+
+.flashes {
+    text-align: center;
+    color: red;
+}
  
 /* -------- Navigation ----------*/
 
@@ -237,7 +242,7 @@ footer {
 
 @media screen and (max-width: 1370px) {
 
-/* This improves the display of the login and register page on smaller laptop screens */
+/* This simplifies the display of the login and register page on smaller laptop screens */
 .login-image, .register-image {
     display: none;
 }
