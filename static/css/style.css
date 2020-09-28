@@ -82,6 +82,11 @@ i.material-icons {
     color: white;
 }
 
+.btn-small {
+    background: #FBF4E1;
+    height: 10%;
+}
+
 /* ----- Forms -----*/
 
 .input-field label {
@@ -93,6 +98,7 @@ i.material-icons {
 #recipe_form.container, #edit-form.container {
     padding: 0 5% 0 5%;
 }
+
 
 /* ----- Login and Register Pages -----*/
 
