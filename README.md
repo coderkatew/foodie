@@ -18,11 +18,11 @@ Foodie is a Flask project that uses MongoDB to build a recipe database so that u
 
 4. [Technologies Used](Technologies)
 
-5. [Testing]()
+5. [Testing](#Testing)
 
 6. [Deployment](Deployment)
 
-7. [Project Credits]()
+7. [Credits and Acknowledgements]()
 
 <br><br>
 
@@ -156,11 +156,13 @@ This project is stored on [GitHub](https://github.com/) and has been deployed to
 <br>
 
 ## Testing
-### Manual Testing
-This project has been tested manually on desktop and mobile in Chrome and Firefox. I used Chrome Developer Tools to carry out some of the mobile testing.
-All images are under 5MB to ensure they load quickly.
 
-## Testing
+### Automated Testing - Validation Programs
+HTML files have been tested using [W3C Markup Validator](https://validator.w3.org/). See results [here](/testing).
+The CSS file has been tested using [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/). See results [here](/testing).
+The Javascript file has been tested using [JSHint](https://jshint.com/). See results [here](/testing).
+The Python file has been tested using [PEP8](http://pep8online.com/). See results [here](/testing).
+
 ### Manual Testing
 This project has been tested manually on desktop and mobile in Chrome and Firefox. I used Chrome Developer Tools to carry out some of the mobile testing.
 All images are under 5MB to ensure they load quickly.
@@ -231,8 +233,27 @@ To deploy the project to Heroku, you can follow these steps:
 5. Go to 'Reveal Config Vars' in settings in Heroku and add the environmental variables for IP, PORT, MONGODB_URI and SECRET_KEY (they should match the env.py file in order to connect successfully).
 6. Log in to Heroku through the terminal with the comman `heroku login -i`.
 7. Once you are logged in, use the command `git push heroku master` to push the project to Heroku.
-8. Click 'Open App' at the top of the Heroku dashboard and the project will open in a new tab.
+8. Click 'Open App' at the top of the Heroku dashboard and the project will open in a new tab.<br><br>
+
+## Credits and Acknowledgements
+
+### Content and Media
+* Recipe Content - All recipe content (text and images) is from [BBC goodfood](https://www.bbcgoodfood.com/) and for educational purposes only.
+
+* Images - Two images from the project were downloaded from Unsplash: [Login and Register page image](https://unsplash.com/photos/XoByiBymX20) and [Recipe Image Placeholder](https://unsplash.com/photos/wtevVfGYwnM)
+<br><br>
+
+### Acknowledgements
+I learned the key concepts of HTML, CSS, Python, and Javascript in the Code Institute course materials and read further material in [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/quickstart/) and [MongoDB Documentation](https://docs.mongodb.com/) to improve my knowledge of Flask and MongoDB. <br>
+
+I found information for some specific features used in the project from the following sources:
+* [Login and Register Setup](https://www.youtube.com/watch?v=vVx1737auSE)
+* [Sticky Footer](https://css-tricks.com/couple-takes-sticky-footer)
+* [Flash Messages](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/)
+* [Delete Modal](https://www.w3schools.com/howto/howto_css_delete_modal.asp)
+I used resources like [Stack Overflow](stackoverflow.com) and [W3Schools](w3schools.com) as well as the Code Institute Slack channels for help with troubleshooting smaller issues during the project. I got support from Code Institute tutors and great guidance from my mentor, Guido, throughout the project.<br><br>
 
 --------
 
 [Back to top](#Foodie)
+
