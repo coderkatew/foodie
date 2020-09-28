@@ -6,3 +6,7 @@ $(document).ready(function() {
      $('.tooltipped').tooltip();
      $('.select').material_select();
     });
+
+function goBack() {
+  window.history.back();
+};

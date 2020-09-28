@@ -22,6 +22,14 @@ img {
     text-align: center;
     color: red;
 }
+
+.ingredients ul li {
+    list-style: disc;
+}
+
+.ingredients ul {
+    padding-left: 6%;
+}
  
 /* -------- Navigation ----------*/
 
@@ -80,6 +88,10 @@ i.material-icons {
      color: black;
      font-size: .83em;
      font-weight: bolder;
+}
+
+#recipe_form.container, #edit-form.container {
+    padding: 0 5% 0 5%;
 }
 
 /* ----- Login and Register Pages -----*/
@@ -263,6 +275,11 @@ nav .brand-logo {
   margin-left: 0;
 }
 
+/* Resizes text to fit the dropdown menu */
+.select-dropdown {
+  font-size: 50%;
+}
+
 /* Removes the image on mobile for less cluttered view */
 .login-image, .register-image {
     display: none;
@@ -277,6 +294,10 @@ nav .brand-logo {
 div.row {
     margin: 0;
     width: 100%;
+}
+
+#recipe_name {
+    width: 200%;
 }
 
 .recipe-image {
@@ -298,7 +319,9 @@ div.row {
 
 #recipe-card.row {
     margin: 2%;
+    padding-bottom: 2%;
 }
+
 
 #recipe-card-image {
     padding: 2% 0 2% 22%;
@@ -351,7 +374,12 @@ div.row.view-actions {
 
 #recipe_form.container, #edit-form.container {
     margin: 0;
-    padding: 8%;
+    padding-left: 8%;
+}
+
+div.row {
+    width: 100%;
+    margin: 0;
 }
 
 /*-- Media Queries - Footer -----*/
