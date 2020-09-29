@@ -6,7 +6,7 @@
 <div class="searchbar">
     <form method="POST" action="{{url_for('search_recipes')}}">
         <div class="input-field search">
-            <input id="keyword" name="keyword" type="search" placeholder="Search for a recipe..." value={{keyword}}>
+            <input id="keyword" name="keyword" type="search" placeholder="Search for a recipe..." value="{{keyword}}">
             <!-- Reset takes the user back to the all recipes page -->
             <a href="{{ url_for('all_recipes') }}" class="btn-small">Reset</a>
         </div>
@@ -73,7 +73,7 @@
         <li class="disabled">
             <a href="#!"><i class="material-icons pagination">chevron_left</i></a>
         </li>
-        {% for page_num in pages %} 
+        {% for page_num in pages %}
         {% if page_num == current_page %}
         <li class="active">
             <a class="current-page">{{ page_num }}</a>
@@ -82,7 +82,7 @@
         <li class="waves-effect">
             <a class="tooltipped" data-position="bottom" data-delay="100" data-tooltip="Go to Page" href="{{ url_for('all_recipes', current_page=page_num) }}">{{ page_num }}</a>
         </li>
-        {% endif %} 
+        {% endif %}
         {% endfor %}
         <li class="disabled">
             <a href="#!"><i class="material-icons pagination">chevron_right</i></a> 

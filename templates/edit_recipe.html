@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% block content %}
-	<div class="back-button">
-		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Recipes</a>
-	</div>
+	
+<div class="back-button">
+	<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Recipes</a>
+</div>
+
 <div id="edit-form" class="container">
 	<h3>Edit Recipe</h3>
-	<form action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="col s12"
-		enctype="multipart/form-data">
+	<form action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="col s12" enctype="multipart/form-data">
         <!-- Recipe Name -->
 		<div class="row">
 			<div class="input-field col s6">
@@ -18,23 +19,23 @@
 			<div class="file-field input-field col s6">
 				{% if recipe.recipe_image %}
                 <div class="col 6">
-				<img height="200" width="200" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish">
+				    <img height="200" width="200" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish">
                 </div>
-                  <div class="file-field input-field">
+                <div class="file-field input-field">
                     <div class="btn">
                         <span>+ Photo</span>
                         <input type="file" class="image" name="recipe_image" id="recipe-image" accept="image/png, image/jpeg">
                     </div>
                     <div class="file-path-wrapper">
                         <div class="col s6">
-                        <input class="file-path validate" type="text">
+                            <input class="file-path validate" type="text">
                         </div>
                     </div>
-                    </div>
-                        {% else %}
+                </div>
+                {% else %}
 				<img height="200" width="200" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish"/>
 				<input type="file" class="image" name="recipe_image"  id="recipe-image" accept="image/png, image/jpeg">
-				<label class="recipe-image-label" for="recipe_image">Recipe Image</label>
+				<label class="recipe-image-label" for="recipe-image">Recipe Image</label>
 				{% endif %}
 			</div>
 		</div>
@@ -42,27 +43,27 @@
 		<div class="row">
 			<div class="input-field col s6">
 				<select id="category" name="category">
-          <option value="" disabled selected>Select</option>
-          {% for cat in categories %} {% if cat.category == recipe.category%}
-          <option value="{{cat.category}}" selected>{{cat.category}}</option>
-          {% else %}
-          <option value="{{cat.category}}">{{cat.category}}</option>
-          {% endif %} {% endfor %}
-        </select>
+                    <option value="" disabled selected>Select</option>
+                    {% for cat in categories %} {% if cat.category == recipe.category%}
+                        <option value="{{cat.category}}" selected>{{cat.category}}</option>
+                    {% else %}
+                        <option value="{{cat.category}}">{{cat.category}}</option>
+                    {% endif %} {% endfor %}
+                 </select>
 				<label>Meal Type:</label>
 			</div>
-		<!-- Difficulty Level -->
+		    <!-- Difficulty Level -->
 			<div class="input-field col s6">
 				<select name="difficulty">
-          <option value="" disabled selected>Select</option>
-           {% for level in levels %}
-           {% if level.difficulty == recipe.difficulty%}
-          <option value="{{level.difficulty}}" selected>{{level.difficulty}}</option>
-            {% else %}
-            <option value="{{level.difficulty}}">{{level.difficulty}}</option>
-          {% endif %} 
-          {% endfor %}
-        </select>
+                    <option value="" disabled selected>Select</option>
+                    {% for level in levels %}
+                    {% if level.difficulty == recipe.difficulty%}
+                        <option value="{{level.difficulty}}" selected>{{level.difficulty}}</option>
+                    {% else %}
+                        <option value="{{level.difficulty}}">{{level.difficulty}}</option>
+                    {% endif %} 
+                    {% endfor %}
+                </select>
 				<label>Difficulty:</label>
 			</div>
 		</div>
@@ -70,18 +71,18 @@
 		<div class="row">
 			<div class="input-field col s6">
 				<select name="cuisine">
-          <option value="" disabled selected>Select</option>
-          {% for cuisine in cuisines %}
-            {% if cuisine.cuisine == recipe.cuisine%}
-          <option value="{{cuisine.cuisine}}" selected>{{cuisine.cuisine}}</option>
-             {% else %}
-          <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
-          {% endif %} 
-          {% endfor %}
-        </select>
+                    <option value="" disabled selected>Select</option>
+                    {% for cuisine in cuisines %}
+                        {% if cuisine.cuisine == recipe.cuisine%}
+                            <option value="{{cuisine.cuisine}}" selected>{{cuisine.cuisine}}</option>
+                        {% else %}
+                            <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
+                        {% endif %} 
+                    {% endfor %}
+                </select>
 				<label>Cuisine:</label>
 			</div>
-		<!-- Servings -->
+		    <!-- Servings -->
 			<div class="input-field col s6">
 				<input id="servings" name="servings" type="number" placeholder="Servings" class="validate" min="1" required="" value="{{recipe.servings}}"/>
 				<label>Number of Servings</label>
@@ -93,60 +94,59 @@
 				<label>Cooking Time (Mins)</label>
 				<input id="time" name="time" placeholder="Cooking time" class="validate" type="number" min="1" required="" value="{{recipe.time}}"/>
             </div>
-      <!-- Temperature -->
+            <!-- Temperature -->
 			<div class="input-field col s6">
 				<label>Temperature (&#176;C)</label>
 				<input id="temperature" name="temperature" placeholder="Temperature" class="validate" type="number" min="1" value="{{recipe.temperature}}"/>
             </div>
+		</div>
+		<!-- Ingredients -->
+		<div class="row">
+			<div class="input-field col s12">
+				<h5>Ingredients:</h5>
+				<p><em>Add each ingredient on a new line</em></p>
+				<textarea id="ingredients" name="ingredients" class="materialize-textarea validate" required="">{{existing_ingredients}}</textarea>
 			</div>
-			<!-- Ingredients -->
-			<div class="row">
-				<div class="input-field col s12">
-					<h5>Ingredients:</h5>
-					<p><em>Add each ingredient on a new line</em></p>
-					<textarea id="ingredients" name="ingredients" class="materialize-textarea validate" required="">{{existing_ingredients}}</textarea>
-				</div>
+		</div>
+		<!-- Method -->
+		<div class="row">
+			<div class="input-field col s12">
+				<h5>Method:</h5>
+				<p><em>Add each step on a new line</em></p>
+                <textarea id="method" name="method" class="materialize-textarea validate" required="">{{existing_method}}</textarea>
 			</div>
-			<!-- Method -->
-			<div class="row">
-				<div class="input-field col s12">
-					<h5>Method:</h5>
-					<p><em>Add each step on a new line</em></p>
-        <textarea id="method" name="method" class="materialize-textarea validate" required="">{{existing_method}}</textarea>
-				</div>
-			</div>
-			<!-- Allergens -->
-			<div class="row">
-				<div class="input-field col s8">
-					<select id="allergens" name="allergens"  class="validate" multiple>
+		</div>
+		<!-- Allergens -->
+		<div class="row">
+			<div class="input-field col s8">
+				<select id="allergens" name="allergens"  class="validate" multiple>
                     {% for allergen in allergens %}
-                    {% if allergen.allergen in recipe.allergens%}
-                    <option value="{{allergen.allergen}}" selected>{{allergen.allergen}}</option>
+                        {% if allergen.allergen in recipe.allergens%}
+                            <option value="{{allergen.allergen}}" selected>{{allergen.allergen}}</option>
                         {% else %}
-                    <option value="{{allergen.allergen}}">{{allergen.allergen}}</option>
+                            <option value="{{allergen.allergen}}">{{allergen.allergen}}</option>
                         {% endif %} 
                     {% endfor %}
-                    </select>
-					<label>Allergens:</label>
+                </select>
+				<label>Allergens:</label>
+			</div>
+		</div>
+		<button class="btn waves-effect waves-light" type="submit" name="action">Update</button>
+        <!-- A Materialize modal is used for the delete recipe warning -->
+		<a class="waves-effect waves-light btn modal-trigger" href="#delete-modal">Delete</a>
+			<div id="delete-modal" class="modal">
+				<div class="modal-content">
+					<h4>Delete Recipe</h4>
+					<p>Are you sure you want to delete this recipe?</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+					<a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
 				</div>
 			</div>
-			<button class="btn waves-effect waves-light" type="submit" name="action">
-      Update
-    </button>
-    <!-- A Materialize modal is used for the delete recipe warning -->
-				<a class="waves-effect waves-light btn modal-trigger" href="#delete-modal">Delete</a>
-				<div id="delete-modal" class="modal">
-					<div class="modal-content">
-						<h4>Delete Recipe</h4>
-						<p>Are you sure you want to delete this recipe?</p>
-					</div>
-					<div class="modal-footer">
-						<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-						<a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
-					</div>
-				</div>
 	</form>
 </div>
+
     <div class="row back-button">
 		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
     </div>

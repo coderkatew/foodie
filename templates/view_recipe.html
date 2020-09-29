@@ -1,23 +1,26 @@
 {% extends 'base.html' %} {% block content %}
+
 <div class="container">
+
 	<div class="back-button">
-		<button onclick="goBack()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Recipes</button>
+		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
 	</div>
+    
 	<!-- Recipe Image -->
 	<div class="row">
 		<div class="col 3">
-        <div class="view-recipe-image">
-			{% if recipe.recipe_image %}
-			<img class="recipe-image-view" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish"/>
-    {% else %}
-			<img height="200" width="200" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish"/>
-    {% endif %}
-    </div>
-    </div>
-			<!-- Recipe Name -->
-			<div class="col 9 recipe-top">
-				<h1 class="title-view">{{recipe.recipe_name}}</h1>
-                <!-- Meal type -->
+            <div class="view-recipe-image">
+			    {% if recipe.recipe_image %}
+			        <img class="recipe-image-view" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish"/>
+                {% else %}
+                        <img height="200" width="200" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish"/>
+                {% endif %}
+            </div>
+        </div>
+		<!-- Recipe Name -->
+		<div class="col 9 recipe-top">
+			<h1 class="title-view">{{recipe.recipe_name}}</h1>
+            <!-- Meal type -->
 			<div class="row recipe-detail">
 				<div class="col 3">
 					<p><i class="fas fa-utensils all-recipes"></i> {{recipe.category}}</p>
@@ -25,35 +28,34 @@
 				<!-- Cuisine -->
 				<div class="col 3">
 					{% if recipe.cuisine %}
-					<p><i class="fas fa-globe-americas"></i> {{recipe.cuisine}}</p>
+					    <p><i class="fas fa-globe-americas"></i> {{recipe.cuisine}}</p>
 					{% else %}
-					<p><i class="fas fa-globe-americas"></i> Cuisine: - </p>
+					    <p><i class="fas fa-globe-americas"></i> Cuisine: - </p>
 					{% endif %}
 				</div>
 			</div>
             <div class="row recipe-detail">
-			<!-- Difficulty Level -->
-			<div class="col 3">
-				<p><i class="fas fa-signal"></i> {{recipe.difficulty}}</p>
-			</div>
-			<!-- Servings -->
-			<div class="col 3">
-				<p><i class="fas fa-user-friends all"></i> Serves {{recipe.servings}}</p>
-			</div>
-		</div>
-		<div class="row recipe-detail">
-			<!-- Time -->
-			<div class="col 3">
-				<p><i class="far fa-clock"></i> {{recipe.time}} Minutes</p>
-			</div>
-			<!-- Temperature -->
-			<div class="col 3">
-				<p><i class="fas fa-thermometer-half"></i> {{recipe.temperature}} &#176;C</p>
-			</div>
-		</div>
+                <!-- Difficulty Level -->
+                <div class="col 3">
+                    <p><i class="fas fa-signal"></i> {{recipe.difficulty}}</p>
+                </div>
+                <!-- Servings -->
+                <div class="col 3">
+                    <p><i class="fas fa-user-friends all"></i> Serves {{recipe.servings}}</p>
+                </div>
+		    </div>
+            <div class="row recipe-detail">
+                <!-- Time -->
+                <div class="col 3">
+                    <p><i class="far fa-clock"></i> {{recipe.time}} Minutes</p>
+                </div>
+                <!-- Temperature -->
+                <div class="col 3">
+                    <p><i class="fas fa-thermometer-half"></i> {{recipe.temperature}} &#176;C</p>
+                </div>
             </div>
-		</div>
-		
+        </div>
+	</div>
 		<div class="row view-ingredients">
 			<!-- Ingredients -->
 			<div class="ingredients">
@@ -121,15 +123,15 @@
 							class="modal-close waves-effect waves-green btn-flat">Delete</a>
 					</div>
 				</div>
-                </div>
-                <div class="row back-button">
-				<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
-                </div>
-                {% else %}
-                <div class="row back-button center">
-				<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
-                </div>
-                {% endif %}
             </div>
+        <div class="row back-button">
+				<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
+            </div>
+            {% else %}
+            <div class="row back-button center">
+				<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Recipes</a>
+            </div>
+            {% endif %}
+        </div>
 		</div>
 		{% endblock %}

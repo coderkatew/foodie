@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% block content %}
+
 <div class="container">
-<div class="back-button">
+
+    <div class="back-button">
 		<a href="{{url_for('all_recipes')}}" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>  Back to Recipes</a>
 	</div>
     <div class="row center-align">
@@ -8,60 +10,61 @@
     </div>
     <div class="col s12">
         {% if total_recipes > 0 %}
+        <!-- Displays welcome message for user and calculates the number of recipes added -->
         <div class="my-recipe-text">
             <h5>Hello, <span>{{ username }}</span>! You've added {{ total_recipes }} recipe(s) to Foodie!</h5>
         </div>
         {% else %}
         <div class="no-recipe-text">
-        <h5>Hello, <span>{{ username }}</span>! You haven't added any recipes yet.</h5>
+            <h5>Hello, <span>{{ username }}</span>! You haven't added any recipes yet.</h5>
         </div>
         <div class="row center-align">
-        <a href="{{ url_for('add_recipe') }}" class="btn">Let's Get Started!</a>
+            <a href="{{ url_for('add_recipe') }}" class="btn">Let's Get Started!</a>
         </div>
         <div class="row center-align">
-        <a href="{{ url_for('all_recipes') }}" class="btn">Browse Recipes</a>
+            <a href="{{ url_for('all_recipes') }}" class="btn">Browse Recipes</a>
         </div>
         {% endif %}
     </div>
     <div class="row">
         <div class="card-image">
             {% for recipe in contributor_recipes %}
-  <!-- Adapted Materialize Card -->
-  <div id="recipe-card" class="row">
-    <div class="col 12" id="recipe-card-image">
-      <div class="recipe-image">
-        {% if recipe.recipe_image %}
-        <img class="recipe-image" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish"/>
-        {% else %}
-        <img height="100" width="100" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish"/>
-        {% endif %}
-      </div>
-    </div>
+    <!-- Adapted Materialize cards displaying the user's recipes -->
+    <div id="recipe-card" class="row">
+        <div class="col 12" id="recipe-card-image">
+            <div class="recipe-image">
+                {% if recipe.recipe_image %}
+                    <img class="recipe-image" src="{{ url_for('upload', filename=recipe.recipe_image) }}" alt="photo of dish"/>
+                {% else %}
+                    <img height="100" width="100" src="{{ url_for('static', filename='images/placeholder.png')}}" alt="photo of dish"/>
+                {% endif %}
+            </div>
+        </div>
     <div class="col s9">
-      <div class="card-content">
-        <div>
-        <h4 class="recipe-title">{{recipe.recipe_name}}</h4>
+        <div class="card-content">
+            <div>
+                <h4 class="recipe-title">{{recipe.recipe_name}}</h4>
+            </div>
+            <div class="row recipe-details">
+                <div class="col s3.5">
+                    <p><i class="fas fa-utensils all-recipes"></i> {{recipe.category}}</p>
+                </div>
+                <div class="col s3.5">
+                    <p class="level"><i class="fas fa-signal"></i> {{recipe.difficulty}}</p>
+                </div>
+                <div class="col s3.5">
+                    <p class="card-time"><i class="far fa-clock"></i> {{recipe.time}} mins</p>
+                </div>
+            </div>
         </div>
-        <div class="row recipe-details">
-          <div class="col s3.5">
-        <p><i class="fas fa-utensils all-recipes"></i> {{recipe.category}}</p>
-        </div>
-        <div class="col s3.5">
-        <p class="level"><i class="fas fa-signal"></i> {{recipe.difficulty}}</p>
-        </div>
-         <div class="col s3.5">
-        <p class="card-time"><i class="far fa-clock"></i> {{recipe.time}} mins</p>
-        </div>
-        </div>
-      </div>
     </div>
     <div class="col s12">
-      <div class="card-action">
-      <div class="row">
-        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">View</a>
-        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
-      <!-- A Materialize modal is used for the delete recipe warning -->
-				<a class="waves-effect waves-light btn modal-trigger" href="#delete-modal">Delete</a>
+        <div class="card-action">
+            <div class="row">
+                <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">View</a>
+                <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn">Edit</a>
+                <!-- A Materialize modal is used for the delete recipe warning -->
+                <a class="waves-effect waves-light btn modal-trigger" href="#delete-modal">Delete</a>
 				<div id="delete-modal" class="modal">
 					<div class="modal-content">
 						<h4>Delete Recipe</h4>
@@ -72,11 +75,11 @@
 						<a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
 					</div>
 				</div>
-                </div>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
-  {% endfor %}
+    </div>
+    {% endfor %}
     </div>
     </div>
 </div>

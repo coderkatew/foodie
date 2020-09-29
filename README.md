@@ -10,19 +10,19 @@ Foodie is a Flask project that uses MongoDB to build a recipe database so that u
 
 ## Project Outline
 
-1. [UX](UX)
+1. [UX](#ux)
 
-2. [Documentation](Documentation)
+2. [Documentation](#documentation)
 
-3. [Features](Features)
+3. [Features](#features)
 
-4. [Technologies Used](Technologies)
+4. [Technologies Used](#technologies-used)
 
-5. [Testing](#Testing)
+5. [Testing](#testing)
 
-6. [Deployment](#Deployment)
+6. [Deployment](#deployment)
 
-7. [Credits and Acknowledgements](#Credits)
+7. [Credits and Acknowledgements](#credits-and-acknowledgements)
 
 <br><br>
 
@@ -158,10 +158,10 @@ This project is stored on [GitHub](https://github.com/) and has been deployed to
 ## Testing
 
 ### Automated Testing - Validation Programs
-HTML files have been tested using [W3C Markup Validator](https://validator.w3.org/). See results [here](/testing).
-The CSS file has been tested using [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/). See results [here](/testing).
-The Javascript file has been tested using [JSHint](https://jshint.com/). See results [here](/testing).
-The Python file has been tested using [PEP8](http://pep8online.com/). There are a number of "line too long" warnings in the test results which I haven't been able to resolve without breaking the code but it is mentioned as a known issue online. See results [here](/testing).
+* HTML files have been tested using [W3C Markup Validator](https://validator.w3.org/). See results [here](/testing).
+* The CSS file has been tested using [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/). See results [here](/testing).
+* The Javascript file has been tested using [JSHint](https://jshint.com/). See results [here](/testing).
+* The Python file has been tested using [PEP8](http://pep8online.com/). There are a number of "line too long" warnings in the test results which I haven't been able to resolve without breaking the code but it is mentioned as a known issue online. See results [here](/testing).
 
 ### Manual Testing
 This project has been tested manually on desktop and mobile in Chrome and Firefox. I used Chrome Developer Tools to carry out some of the mobile testing.
@@ -194,39 +194,39 @@ I can click 'Delete' on a recipe card or the 'Edit Recipe' page for a recipe I'v
 * **As a user, I want to access the site from a desktop or laptop, and from a mobile device.**
 The site is accessible from desktop, laptop and mobile device, and functions well on each device. I added some additional media queries to improve the display for smaller screen sizes.
 * **As a user, I want to log out when I've finished browsing or adding recipes.**
-Clicking 'Log Out' ends the user session and displays the login page. Note: I don't log out but closed the browser, the session will continue when I visit the site again. 
+Clicking 'Log Out' ends the user session and displays the login page. Note: If I don't log out but closed the browser, the session will continue when I visit the site again. 
 
 
 ### Bugs
 I encountered the following bugs during development of this project:
 <br>
 
-**Issue 1**
+**Issue 1**<br>
 **Problem:** Materialize sidenav opened on mobile but it remained static and the options weren't clickable.
 <br>
 
-**Solution:**The navbar was set as 'fixed' and removing this class resolved the issue.
+**Solution:** The navbar was set as 'fixed' and removing this class resolved the issue.
 <br>
 
-**Issue 2**
-**Problem:**Selected options from the Allergens checkbox menu displayed in a string for the Edit and View pages.
+**Issue 2**<br>
+**Problem:** Selected options from the Allergens checkbox menu displayed in a string for the Edit and View pages.
 <br>
 
-**Solution:**I used the .getlist method to save and display them in a list.
+**Solution:** I used the .getlist method to save and display them in a list.
 <br>
 
-**Issue 3**
-**Problem:**When a user views a recipe from the My Recipes page, the Back to Recipes button takes the user back to the first page of the All Recipes page. 
+**Issue 3**<br>
+**Problem:** When a user views a recipe from the My Recipes page, the Back to Recipes button takes the user back to the first page of the All Recipes page. 
 <br>
 
-**Proposed Solution:**I'd like to add context URL variables for the next release of the project to take the user back to the My Recipes page at that point. They can always access the My Recipes page using the navbar but I think it would improve the user experience.
+**Proposed Solution:** I'd like to add context URL variables for the next release of the project to take the user back to the My Recipes page at that point. They can always access the My Recipes page using the navbar but I think it would improve the user experience.
 <br>
 
-**Issue 4**
-**Problem:**The search bar was missing a 'Clear search' option so the user had to use the main navigation to return to the All Recipes page.
+**Issue 4**<br>
+**Problem:** The search bar was missing a 'Clear search' option so the user had to use the main navigation to return to the All Recipes page.
 <br>
 
-**Solution:**I've added a 'Reset' button which links back to the All Recipes page - I'd like to replace this with an icon placed in the search bar for the next release.
+**Solution:** I've added a 'Reset' button which links back to the All Recipes page - I'd like to replace this with an icon placed in the search bar for the next release.
 <br><br> 
 
 
@@ -277,16 +277,18 @@ To deploy the project to Heroku, you can follow these steps:
 <br><br>
 
 ### Acknowledgements
-I learned the key concepts of HTML, CSS, Python, and Javascript in the Code Institute course materials and read further material in [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/quickstart/) and [MongoDB Documentation](https://docs.mongodb.com/) to improve my knowledge of Flask and MongoDB. <br>
+I learned the key concepts of HTML, CSS, Python, and Javascript from the Code Institute course materials and read further material in [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/quickstart/) and [MongoDB Documentation](https://docs.mongodb.com/) to improve my knowledge of Flask and MongoDB. <br>
 
 I found information for some specific features used in the project from the following sources:
 * [Login and Register Setup](https://www.youtube.com/watch?v=vVx1737auSE)
 * [Sticky Footer](https://css-tricks.com/couple-takes-sticky-footer)
 * [Flash Messages](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/)
-* [Delete Modal](https://www.w3schools.com/howto/howto_css_delete_modal.asp)
+* [Delete Modal](https://www.w3schools.com/howto/howto_css_delete_modal.asp)<br><br>
+
+
 I used resources like [Stack Overflow](stackoverflow.com) and [W3Schools](w3schools.com) as well as the Code Institute Slack channels for help with troubleshooting smaller issues during the project. I got support from Code Institute tutors and great guidance from my mentor, Guido, throughout the project.<br><br>
 
 --------
 
-[Back to top](#Foodie)
+[Back to top](#foodie)
 
